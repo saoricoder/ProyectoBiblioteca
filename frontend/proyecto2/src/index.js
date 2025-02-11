@@ -14,7 +14,11 @@ import { ReporteDos } from "./page/contabilidad/ComplexPage/reporteDos";
 
 // Módulo Biblioteca
 import { IndexBiblio } from "./page/biblioteca/indexBiblio";
-import {CrearAutor} from "./page/biblioteca/SimplePage/simpleUno";
+import AutorPage from './page/biblioteca/SimplePage/AutorPage';
+import LibroPage from './page/biblioteca/SimplePage/LibroPage';
+import PrestamoPage from './page/biblioteca/ComplexPage/PrestamoPage';
+import ReporteLibrosPorDia from './page/biblioteca/ComplexPage/ReporteLibrosPorDia';
+import ReporteCruzado from './page/biblioteca/ComplexPage/ReporteCruzado';
 
 // Módulo Selección
 import { IndexSelec } from "./page/seleccion/indexSelec";
@@ -65,8 +69,24 @@ const router = createBrowserRouter([
     element: <IndexBiblio />, // Página principal de Biblioteca
   },
   {
-    path: "/crear-autor-biblio",
-    element: <CrearAutor />, // Página principal de Biblioteca
+    path: "/biblioteca/autor",
+    element: <AutorPage />, // Página Autor de Biblioteca
+  },
+  {
+    path: "/biblioteca/libro",
+    element: <LibroPage />, // Página Libro de Biblioteca
+  },
+  {
+    path: "/biblioteca/prestamo",
+    element: <PrestamoPage />, // Página Prestamo de Biblioteca
+  },
+  {
+    path: "/biblioteca/reporte-libros-por-dia",
+    element: <ReporteLibrosPorDia />, // Página Reporte 1 de Biblioteca
+  },
+  {
+    path: "/biblioteca/reporte-cruzado",
+    element: <ReporteCruzado />, // Página reporte 2 de Biblioteca
   },
 
   // Rutas para el módulo de Nómina

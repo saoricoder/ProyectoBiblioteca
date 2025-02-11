@@ -4,9 +4,10 @@ namespace WebApi2._0.models.biblioteca
     {
         public string? ISBN { get; set; }
         public string? Titulo { get; set; }
-        public string? Autor { get; set; }
+        public int AutorCodigo { get; set; }
 
-        public int ValorPres { get; set; }
+        public decimal ValorPrestamo { get; set; }
+        public Autor_models? Autor{get;set;}
 
     }
 }

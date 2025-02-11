@@ -10,19 +10,19 @@ export function IndexBiblio() {
       <div className="container_cont">
         <ul className="cont">
           <li className="cont_item">
-            <Link to="/crear-autor-biblio">Crear Autor</Link>
+            <Link to="/biblioteca/autor">Autores</Link>
           </li>
           <li className="cont_item">
-            <Link to="/cuenta">Crear Libro</Link>
+            <Link to="/biblioteca/libro">Libros</Link>
           </li>
           <li className="cont_item">
-            <Link to="/comprobante">Prestámo de Libros </Link>
+            <Link to="/biblioteca/prestamo">Prestámos </Link>
           </li>
           <li className="cont_item">
-            <Link to="/balance">Reporte cruzado Libro Autores</Link>
+            <Link to="/biblioteca/reporte-libros-por-dia">Reporte de libros por Día</Link>
           </li>
           <li className="cont_item">
-            <Link to="/resultado">Reporte por fechas </Link>
+            <Link to="/biblioteca/reporte-cruzado">Reporte Cruzado </Link>
           </li>
         </ul>
       </div>

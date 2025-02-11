@@ -3,19 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\User\\Documents\\GitHub\\ProyectoSecretoXX\\backend\\WebApi2.0\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|c:\\users\\user\\documents\\github\\proyectosecretoxx\\backend\\webapi2.0\\webapi2.0\\data\\conexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|solutionrelative:webapi2.0\\data\\conexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|c:\\users\\user\\documents\\github\\proyectosecretoxx\\backend\\webapi2.0\\webapi2.0\\migrations\\appdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|solutionrelative:webapi2.0\\migrations\\appdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\User\\AppData\\Local\\Temp\\bw1baxz1..sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|"
+      "AbsoluteMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|c:\\users\\user\\documents\\github\\proyectosecretoxx\\backend\\webapi2.0\\webapi2.0\\models\\biblioteca\\autor_models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|solutionrelative:webapi2.0\\models\\biblioteca\\autor_models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|c:\\users\\user\\documents\\github\\proyectosecretoxx\\backend\\webapi2.0\\webapi2.0\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|solutionrelative:webapi2.0\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|c:\\users\\user\\documents\\github\\proyectosecretoxx\\backend\\webapi2.0\\webapi2.0\\models\\biblioteca\\detalleprestamo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|solutionrelative:webapi2.0\\models\\biblioteca\\detalleprestamo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|c:\\users\\user\\documents\\github\\proyectosecretoxx\\backend\\webapi2.0\\webapi2.0\\models\\biblioteca\\libro_models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|solutionrelative:webapi2.0\\models\\biblioteca\\libro_models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|c:\\users\\user\\documents\\github\\proyectosecretoxx\\backend\\webapi2.0\\webapi2.0\\data\\contabilidad_data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|solutionrelative:webapi2.0\\data\\contabilidad_data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|c:\\users\\user\\documents\\github\\proyectosecretoxx\\backend\\webapi2.0\\webapi2.0\\data\\conexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|solutionrelative:webapi2.0\\data\\conexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|c:\\users\\user\\documents\\github\\proyectosecretoxx\\backend\\webapi2.0\\webapi2.0\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|solutionrelative:webapi2.0\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|c:\\users\\user\\documents\\github\\proyectosecretoxx\\backend\\webapi2.0\\webapi2.0\\data\\bibioteca_data\\bibliotecadata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -30,23 +43,12 @@
       "RelativeMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|solutionrelative:webapi2.0\\data\\contabilidad_data\\cuentas_data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|c:\\users\\user\\documents\\github\\proyectosecretoxx\\backend\\webapi2.0\\webapi2.0\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|solutionrelative:webapi2.0\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|c:\\users\\user\\documents\\github\\proyectosecretoxx\\backend\\webapi2.0\\webapi2.0\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|solutionrelative:webapi2.0\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|c:\\users\\user\\documents\\github\\proyectosecretoxx\\backend\\webapi2.0\\webapi2.0\\controllers\\contabilidadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|solutionrelative:webapi2.0\\controllers\\contabilidadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|c:\\users\\user\\documents\\github\\proyectosecretoxx\\backend\\webapi2.0\\webapi2.0\\models\\contabilidad\\estadoresultado_models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|solutionrelative:webapi2.0\\models\\contabilidad\\estadoresultado_models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\User\\AppData\\Local\\Temp\\bw1baxz1..sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
     }
   ],
   "DocumentGroupContainers": [
@@ -56,35 +58,93 @@
       "DocumentGroups": [
         {
           "DockedWidth": 299,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AppDbContextModelSnapshot.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\Migrations\\AppDbContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "WebApi2.0\\Migrations\\AppDbContextModelSnapshot.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\Migrations\\AppDbContextModelSnapshot.cs",
+              "RelativeToolTip": "WebApi2.0\\Migrations\\AppDbContextModelSnapshot.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAwwBIAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-11T07:39:09.264Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "SQLQuery1.sql ",
-              "DocumentMoniker": "C:\\Users\\User\\AppData\\Local\\Temp\\bw1baxz1..sql",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\AppData\\Local\\Temp\\bw1baxz1..sql",
-              "ToolTip": "SQLQuery1.sql ",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-02-10T05:52:12.836Z",
+              "Title": "Autor_models.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\models\\biblioteca\\Autor_models.cs",
+              "RelativeDocumentMoniker": "WebApi2.0\\models\\biblioteca\\Autor_models.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\models\\biblioteca\\Autor_models.cs",
+              "RelativeToolTip": "WebApi2.0\\models\\biblioteca\\Autor_models.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-11T07:39:03.775Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\Program.cs",
-              "RelativeDocumentMoniker": "WebApi2.0\\Program.cs",
-              "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\Program.cs",
-              "RelativeToolTip": "WebApi2.0\\Program.cs",
+              "Title": "DetallePrestamo.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\models\\biblioteca\\DetallePrestamo.cs",
+              "RelativeDocumentMoniker": "WebApi2.0\\models\\biblioteca\\DetallePrestamo.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\models\\biblioteca\\DetallePrestamo.cs",
+              "RelativeToolTip": "WebApi2.0\\models\\biblioteca\\DetallePrestamo.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-10T05:50:30.684Z",
+              "WhenOpened": "2025-02-11T07:38:59.758Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Libro_models.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\models\\biblioteca\\Libro_models.cs",
+              "RelativeDocumentMoniker": "WebApi2.0\\models\\biblioteca\\Libro_models.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\models\\biblioteca\\Libro_models.cs",
+              "RelativeToolTip": "WebApi2.0\\models\\biblioteca\\Libro_models.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-11T07:38:50.928Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Conexion.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\Data\\Conexion.cs",
+              "RelativeDocumentMoniker": "WebApi2.0\\Data\\Conexion.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\Data\\Conexion.cs",
+              "RelativeToolTip": "WebApi2.0\\Data\\Conexion.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-10T04:51:57.78Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\Data\\contabilidad_data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "WebApi2.0\\Data\\contabilidad_data\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\Data\\contabilidad_data\\AppDbContext.cs",
+              "RelativeToolTip": "WebApi2.0\\Data\\contabilidad_data\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-10T04:53:13.187Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "BibliotecaData.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\Data\\bibioteca_data\\BibliotecaData.cs",
               "RelativeDocumentMoniker": "WebApi2.0\\Data\\bibioteca_data\\BibliotecaData.cs",
@@ -97,7 +157,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\Program.cs",
+              "RelativeDocumentMoniker": "WebApi2.0\\Program.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\Program.cs",
+              "RelativeToolTip": "WebApi2.0\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-10T05:50:30.684Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "UsuariosData.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\Data\\UsuariosData.cs",
               "RelativeDocumentMoniker": "WebApi2.0\\Data\\UsuariosData.cs",
@@ -110,76 +183,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Conexion.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\Data\\Conexion.cs",
-              "RelativeDocumentMoniker": "WebApi2.0\\Data\\Conexion.cs",
-              "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\Data\\Conexion.cs*",
-              "RelativeToolTip": "WebApi2.0\\Data\\Conexion.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-10T04:51:57.78Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AppDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\Data\\contabilidad_data\\AppDbContext.cs",
-              "RelativeDocumentMoniker": "WebApi2.0\\Data\\contabilidad_data\\AppDbContext.cs",
-              "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\Data\\contabilidad_data\\AppDbContext.cs",
-              "RelativeToolTip": "WebApi2.0\\Data\\contabilidad_data\\AppDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-10T04:53:13.187Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "Cuentas_data.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\Data\\contabilidad_data\\Cuentas_data.cs",
               "RelativeDocumentMoniker": "WebApi2.0\\Data\\contabilidad_data\\Cuentas_data.cs",
               "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\Data\\contabilidad_data\\Cuentas_data.cs",
               "RelativeToolTip": "WebApi2.0\\Data\\contabilidad_data\\Cuentas_data.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAA3wAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-10T04:50:27.036Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\appsettings.json",
-              "RelativeDocumentMoniker": "WebApi2.0\\appsettings.json",
-              "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\appsettings.json",
-              "RelativeToolTip": "WebApi2.0\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-02-10T04:49:43.576Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "appsettings.Development.json",
-              "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\appsettings.Development.json",
-              "RelativeDocumentMoniker": "WebApi2.0\\appsettings.Development.json",
-              "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\appsettings.Development.json",
-              "RelativeToolTip": "WebApi2.0\\appsettings.Development.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-02-10T04:49:36.589Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "EstadoResultado_models.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\models\\contabilidad\\EstadoResultado_models.cs",
               "RelativeDocumentMoniker": "WebApi2.0\\models\\contabilidad\\EstadoResultado_models.cs",
@@ -187,11 +204,12 @@
               "RelativeToolTip": "WebApi2.0\\models\\contabilidad\\EstadoResultado_models.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-03T07:02:13.303Z"
+              "WhenOpened": "2025-02-03T07:02:13.303Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "ContabilidadController.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\Controllers\\ContabilidadController.cs",
               "RelativeDocumentMoniker": "WebApi2.0\\Controllers\\ContabilidadController.cs",

@@ -346,3 +346,4 @@ C:\Users\User\Documents\GitHub\ProyectoSecretoXX\backend\WebApi2.0\WebApi2.0\obj
 C:\Users\User\Documents\GitHub\ProyectoSecretoXX\backend\WebApi2.0\WebApi2.0\obj\Debug\net8.0\WebApi2.0.pdb
 C:\Users\User\Documents\GitHub\ProyectoSecretoXX\backend\WebApi2.0\WebApi2.0\obj\Debug\net8.0\WebApi2.0.genruntimeconfig.cache
 C:\Users\User\Documents\GitHub\ProyectoSecretoXX\backend\WebApi2.0\WebApi2.0\obj\Debug\net8.0\ref\WebApi2.0.dll
+C:\Users\User\Documents\GitHub\ProyectoSecretoXX\backend\WebApi2.0\WebApi2.0\bin\Debug\net8.0\RabbitMQ.Client.dll
