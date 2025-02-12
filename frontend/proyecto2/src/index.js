@@ -11,6 +11,7 @@ import { SimpleDos } from "./page/contabilidad/SimplePage/SimpleDos";
 import { ComplexUno } from "./page/contabilidad/ComplexPage/complejaUno";
 import { ReporteUno } from "./page/contabilidad/ComplexPage/reporteUno";
 import { ReporteDos } from "./page/contabilidad/ComplexPage/reporteDos";
+import { Menu } from "./page/Menu";
 import AdminChat from "./moduls/AdminChat";
 
 // Módulo Biblioteca
@@ -49,7 +50,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/home",
-    element: <menu />,
+    element: <Menu />,
   },
   {
     path: "/biblioteca",
