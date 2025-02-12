@@ -2,12 +2,12 @@
 {
     public class Conexion
     {
-        private String user = "sa";
-        private String password = "angel94";
-        private String server = "DESKTOP-OBRLD3V\\SQLEXPRESS";
-        private String database = "taller";
+        private String user = "saoricoder";
+        private String password = "23889";
+        private String server = "PONIO-CRK2\\MSSQLSERVER01";
+        private String database = "master";
        
-        private static readonly string rutaConexion = "Data Source=DESKTOP-OBRLD3V\\SQLEXPRESS;Initial Catalog=taller;Persist Security Info=True;User ID=sa;Password=angel94;Trust Server Certificate=True";
+        private static readonly string rutaConexion = "Data Source=PONIO-CRK2\\MSSQLSERVER01;Initial Catalog=master;Persist Security Info=True;User ID=saoricoder;Password=23889;Trust Server Certificate=True";
         public static string RutaConexion
         {
             get { return rutaConexion; }
