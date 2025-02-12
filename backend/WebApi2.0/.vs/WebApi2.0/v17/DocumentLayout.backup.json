@@ -1,14 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Angelus\\Documents\\Programer\\Proyecto2AC\\proyecto2\\WebApi2.0\\",
+  "WorkspaceRootPath": "C:\\Users\\Angelus\\Documents\\Programer\\ProyectoSecretoXX\\backend\\WebApi2.0\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|c:\\users\\angelus\\documents\\programer\\proyecto2ac\\proyecto2\\webapi2.0\\webapi2.0\\controllers\\contabilidadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|solutionrelative:webapi2.0\\controllers\\contabilidadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|c:\\users\\angelus\\documents\\programer\\proyectosecretoxx\\backend\\webapi2.0\\webapi2.0\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|solutionrelative:webapi2.0\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|c:\\users\\angelus\\documents\\programer\\proyecto2ac\\proyecto2\\webapi2.0\\webapi2.0\\models\\contabilidad\\estadoresultado_models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|solutionrelative:webapi2.0\\models\\contabilidad\\estadoresultado_models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|c:\\users\\angelus\\documents\\programer\\proyectosecretoxx\\backend\\webapi2.0\\webapi2.0\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|solutionrelative:webapi2.0\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,33 +18,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 299,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "EstadoResultado_models.cs",
-              "DocumentMoniker": "C:\\Users\\Angelus\\Documents\\Programer\\Proyecto2AC\\proyecto2\\WebApi2.0\\WebApi2.0\\models\\contabilidad\\EstadoResultado_models.cs",
-              "RelativeDocumentMoniker": "WebApi2.0\\models\\contabilidad\\EstadoResultado_models.cs",
-              "ToolTip": "C:\\Users\\Angelus\\Documents\\Programer\\Proyecto2AC\\proyecto2\\WebApi2.0\\WebApi2.0\\models\\contabilidad\\EstadoResultado_models.cs",
-              "RelativeToolTip": "WebApi2.0\\models\\contabilidad\\EstadoResultado_models.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAnAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "ChatHub.cs",
+              "DocumentMoniker": "C:\\Users\\Angelus\\Documents\\Programer\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\Hubs\\ChatHub.cs",
+              "RelativeDocumentMoniker": "WebApi2.0\\Hubs\\ChatHub.cs",
+              "ToolTip": "C:\\Users\\Angelus\\Documents\\Programer\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\Hubs\\ChatHub.cs",
+              "RelativeToolTip": "WebApi2.0\\Hubs\\ChatHub.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAABfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-03T07:02:13.303Z",
+              "WhenOpened": "2025-02-08T18:59:18.526Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ContabilidadController.cs",
-              "DocumentMoniker": "C:\\Users\\Angelus\\Documents\\Programer\\Proyecto2AC\\proyecto2\\WebApi2.0\\WebApi2.0\\Controllers\\ContabilidadController.cs",
-              "RelativeDocumentMoniker": "WebApi2.0\\Controllers\\ContabilidadController.cs",
-              "ToolTip": "C:\\Users\\Angelus\\Documents\\Programer\\Proyecto2AC\\proyecto2\\WebApi2.0\\WebApi2.0\\Controllers\\ContabilidadController.cs",
-              "RelativeToolTip": "WebApi2.0\\Controllers\\ContabilidadController.cs",
-              "ViewState": "AgIAAMoBAAAAAAAAAADwv+ABAAAOAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Angelus\\Documents\\Programer\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\Program.cs",
+              "RelativeDocumentMoniker": "WebApi2.0\\Program.cs",
+              "ToolTip": "C:\\Users\\Angelus\\Documents\\Programer\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\Program.cs",
+              "RelativeToolTip": "WebApi2.0\\Program.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABoAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-03T05:16:23.263Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-08T18:57:07.101Z"
             }
           ]
         }

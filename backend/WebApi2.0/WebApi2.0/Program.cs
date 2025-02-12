@@ -1,15 +1,17 @@
 using Microsoft.EntityFrameworkCore;
 using WebApi2._0.Data.contabilidad_data;
+using WebApi2._0.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
-//Cache
+// Agregar SignalR al contenedor de servicios
+builder.Services.AddSignalR();
+// Cache
 builder.Services.AddMemoryCache();
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+// Configuración de Swagger/OpenAPI
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -17,11 +19,15 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Configuración de CORS
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("MyPolicy", app =>
+    options.AddPolicy("MyPolicy", builder =>
     {
-        app.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+        builder.WithOrigins("http://localhost:3000")  // Permitir solo este origen
+               .AllowAnyMethod()
+               .AllowAnyHeader()
+               .AllowCredentials();  // Habilitar credenciales
     });
 });
 
@@ -34,12 +40,16 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors("MyPolicy");
+// Configurar los endpoints de SignalR **antes** de UseRouting
+app.UseRouting();
 
-app.UseHttpsRedirection();
+//Registrar politicas de cors
+app.UseCors("MyPolicy");
 
 app.UseAuthorization();
 
 app.MapControllers();
+// Registrar el Hub de SignalR
+app.MapHub<ChatHub>("/chatHub");
 
 app.Run();

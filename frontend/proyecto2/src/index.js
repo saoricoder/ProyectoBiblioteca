@@ -14,6 +14,7 @@ import { SimpleDos } from "./page/contabilidad/SimplePage/SimpleDos";
 import { ComplexUno } from "./page/contabilidad/ComplexPage/complejaUno";
 import { ReporteUno } from "./page/contabilidad/ComplexPage/reporteUno";
 import { ReporteDos } from "./page/contabilidad/ComplexPage/reporteDos";
+import AdminChat from "./moduls/AdminChat";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: "/contabilidad",
     element: <IndexCont />,
+  },
+  {
+    path: "/admin",
+    element: <AdminChat />,
   },
   {
     path: "/home",

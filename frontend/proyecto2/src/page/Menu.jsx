@@ -1,3 +1,5 @@
+/* import ChatAyuda from "../moduls/chatAyuda"; */
+import HelpChat from "../moduls/chatHub";
 import { MenuHeader } from "../moduls/Menu_header";
 import { Link } from "react-router-dom";
 
@@ -21,6 +23,10 @@ export function Menu() {
             <Link to="/seleccion">Seleccion</Link>
           </li>
         </ul>
+        <div className="chatHub">
+          <HelpChat />
+          {/*  <ChatAyuda /> */}
+        </div>
       </div>
     </div>
   );
