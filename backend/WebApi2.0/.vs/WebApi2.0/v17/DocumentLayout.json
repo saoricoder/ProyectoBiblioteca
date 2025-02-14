@@ -3,16 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\Angelus\\Documents\\Programer\\ProyectoSecretoXX\\backend\\WebApi2.0\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|c:\\users\\angelus\\documents\\programer\\proyectosecretoxx\\backend\\webapi2.0\\webapi2.0\\data\\contabilidad_data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|solutionrelative:webapi2.0\\data\\contabilidad_data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|c:\\users\\angelus\\documents\\programer\\proyectosecretoxx\\backend\\webapi2.0\\webapi2.0\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|solutionrelative:webapi2.0\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|c:\\users\\angelus\\documents\\programer\\proyectosecretoxx\\backend\\webapi2.0\\webapi2.0\\data\\bibioteca_data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|solutionrelative:webapi2.0\\data\\bibioteca_data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|c:\\users\\angelus\\documents\\programer\\proyectosecretoxx\\backend\\webapi2.0\\webapi2.0\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|solutionrelative:webapi2.0\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|c:\\users\\angelus\\documents\\programer\\proyectosecretoxx\\backend\\webapi2.0\\webapi2.0\\data\\conn_general.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|solutionrelative:webapi2.0\\data\\conn_general.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|c:\\users\\angelus\\documents\\programer\\proyectosecretoxx\\backend\\webapi2.0\\webapi2.0\\data\\bibioteca_data\\libro_data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|solutionrelative:webapi2.0\\data\\bibioteca_data\\libro_data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|c:\\users\\angelus\\documents\\programer\\proyectosecretoxx\\backend\\webapi2.0\\webapi2.0\\data\\bibioteca_data\\autor_data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|solutionrelative:webapi2.0\\data\\bibioteca_data\\autor_data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|c:\\users\\angelus\\documents\\programer\\proyectosecretoxx\\backend\\webapi2.0\\webapi2.0\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8CB6BF2F-7D3D-4948-AEE5-EF4AD4AAE031}|WebApi2.0\\WebApi2.0.csproj|solutionrelative:webapi2.0\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -21,25 +33,64 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 299,
-          "SelectedChildIndex": 0,
+          "DockedWidth": 432,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AppDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\Angelus\\Documents\\Programer\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\Data\\contabilidad_data\\AppDbContext.cs",
-              "RelativeDocumentMoniker": "WebApi2.0\\Data\\contabilidad_data\\AppDbContext.cs",
-              "ToolTip": "C:\\Users\\Angelus\\Documents\\Programer\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\Data\\contabilidad_data\\AppDbContext.cs",
-              "RelativeToolTip": "WebApi2.0\\Data\\contabilidad_data\\AppDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAwAAAA9AAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "Libro_data.cs",
+              "DocumentMoniker": "C:\\Users\\Angelus\\Documents\\Programer\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\Data\\bibioteca_data\\Libro_data.cs",
+              "RelativeDocumentMoniker": "WebApi2.0\\Data\\bibioteca_data\\Libro_data.cs",
+              "ToolTip": "C:\\Users\\Angelus\\Documents\\Programer\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\Data\\bibioteca_data\\Libro_data.cs",
+              "RelativeToolTip": "WebApi2.0\\Data\\bibioteca_data\\Libro_data.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-14T05:14:13.854Z",
+              "WhenOpened": "2025-02-14T05:43:28.661Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
+              "Title": "Autor_data.cs",
+              "DocumentMoniker": "C:\\Users\\Angelus\\Documents\\Programer\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\Data\\bibioteca_data\\Autor_data.cs",
+              "RelativeDocumentMoniker": "WebApi2.0\\Data\\bibioteca_data\\Autor_data.cs",
+              "ToolTip": "C:\\Users\\Angelus\\Documents\\Programer\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\Data\\bibioteca_data\\Autor_data.cs",
+              "RelativeToolTip": "WebApi2.0\\Data\\bibioteca_data\\Autor_data.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-14T05:43:02.211Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Angelus\\Documents\\Programer\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\Data\\bibioteca_data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "WebApi2.0\\Data\\bibioteca_data\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\Angelus\\Documents\\Programer\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\Data\\bibioteca_data\\AppDbContext.cs",
+              "RelativeToolTip": "WebApi2.0\\Data\\bibioteca_data\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-14T05:40:02.617Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Conn_general.cs",
+              "DocumentMoniker": "C:\\Users\\Angelus\\Documents\\Programer\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\Data\\Conn_general.cs",
+              "RelativeDocumentMoniker": "WebApi2.0\\Data\\Conn_general.cs",
+              "ToolTip": "C:\\Users\\Angelus\\Documents\\Programer\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\Data\\Conn_general.cs",
+              "RelativeToolTip": "WebApi2.0\\Data\\Conn_general.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-14T05:31:33.515Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "ChatHub.cs",
               "DocumentMoniker": "C:\\Users\\Angelus\\Documents\\Programer\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\Hubs\\ChatHub.cs",
               "RelativeDocumentMoniker": "WebApi2.0\\Hubs\\ChatHub.cs",
@@ -47,20 +98,20 @@
               "RelativeToolTip": "WebApi2.0\\Hubs\\ChatHub.cs",
               "ViewState": "AgIAABYAAAAAAAAAAAAgwC4AAABTAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-08T18:59:18.526Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-08T18:59:18.526Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Angelus\\Documents\\Programer\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\Program.cs",
               "RelativeDocumentMoniker": "WebApi2.0\\Program.cs",
               "ToolTip": "C:\\Users\\Angelus\\Documents\\Programer\\ProyectoSecretoXX\\backend\\WebApi2.0\\WebApi2.0\\Program.cs",
               "RelativeToolTip": "WebApi2.0\\Program.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAADIAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAADIAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-08T18:57:07.101Z"
+              "WhenOpened": "2025-02-08T18:57:07.101Z",
+              "EditorCaption": ""
             }
           ]
         }

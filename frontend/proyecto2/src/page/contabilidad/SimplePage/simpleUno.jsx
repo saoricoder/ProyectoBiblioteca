@@ -5,7 +5,7 @@ import {
   Eliminar,
   ObtenerDatosPorId,
   BuscarPorParam,
-} from "../../../moduls/useFetch";
+} from "../../../services/general/useFetch";
 
 export function SimpleUno() {
   const url = "http://localhost:5261/api/Contabilidad/tipodecuenta";

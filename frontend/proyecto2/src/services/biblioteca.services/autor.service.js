@@ -1,11 +1,29 @@
-import axios from 'axios';
-
-const API_URL = 'http://localhost:5000/api/autor';
-
 export const getAutores = () => {
-    return axios.get(API_URL);
+  try {
+    console.log("get Autores");
+  } catch (error) {
+    return {};
+  }
 };
 
 export const postAutor = (autor) => {
-    return axios.post(API_URL, autor);
+  try {
+    console.log("post Autor" + autor);
+  } catch (error) {
+    return {};
+  }
+};
+export const deleteAutor = (id) => {
+  try {
+    console.log("delete Autor" + id);
+  } catch (error) {
+    return {};
+  }
+};
+export const updateAutor = (autor) => {
+  try {
+    console.log("update Autor" + autor);
+  } catch (error) {
+    return {};
+  }
 };

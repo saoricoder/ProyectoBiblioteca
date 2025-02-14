@@ -53,10 +53,6 @@ const router = createBrowserRouter([
     element: <Menu />,
   },
   {
-    path: "/biblioteca",
-    element: <IndexBiblio />,
-  },
-  {
     path: "/nomina",
     element: <IndexNom />,
   },

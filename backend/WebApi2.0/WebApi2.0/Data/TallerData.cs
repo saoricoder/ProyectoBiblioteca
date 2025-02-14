@@ -19,7 +19,7 @@ namespace WebApi2._0.Data
                 comando.ExecuteNonQuery();
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -31,7 +31,7 @@ namespace WebApi2._0.Data
             string query = "SELECT * FROM taller";
             SqlCommand comando = new(query, conexion);
             SqlDataReader reader = comando.ExecuteReader();
-            List<Taller> lista = new();
+            List<Taller> lista = [];
             while (reader.Read())
             {
                 Taller taller = new()
@@ -75,7 +75,7 @@ namespace WebApi2._0.Data
                 comando.ExecuteNonQuery();
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -92,7 +92,7 @@ namespace WebApi2._0.Data
                 comando.ExecuteNonQuery();
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }

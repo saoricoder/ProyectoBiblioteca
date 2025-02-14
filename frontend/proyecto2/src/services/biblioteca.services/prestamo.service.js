@@ -1,11 +1,30 @@
-import axios from 'axios';
-
-const API_URL = 'http://localhost:5000/api/prestamo';
-
 export const getPrestamos = () => {
-    return axios.get(API_URL);
+  try {
+    console.log("get prestamo");
+  } catch (error) {
+    return {};
+  }
 };
 
 export const postPrestamo = (prestamo) => {
-    return axios.post(API_URL, prestamo);
+  try {
+    console.log("post prestamo" + prestamo);
+  } catch (error) {
+    return {};
+  }
+};
+export const updatePrestamo = (prestamo) => {
+  try {
+    console.log("update prestamo" + prestamo);
+  } catch (error) {
+    return {};
+  }
+};
+
+export const deletePrestamo = (id) => {
+  try {
+    console.log("delete prestamo" + id);
+  } catch (error) {
+    return {};
+  }
 };

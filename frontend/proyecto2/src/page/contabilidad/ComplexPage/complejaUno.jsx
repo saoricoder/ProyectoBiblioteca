@@ -5,13 +5,16 @@ import {
   Insertar,
   ObtenerDatos,
   ObtenerDatosPorId,
-} from "../../../moduls/useFetch";
+} from "../../../services/general/useFetch";
 import {
   BuscarBase,
   EliminarRegistro,
   ModificarComprobante,
-} from "../../../moduls/comprobante.service";
-import { EliminarBase, ModificarBase } from "../../../moduls/crud.service";
+} from "../../../services/contabilida.services/comprobante.service";
+import {
+  EliminarBase,
+  ModificarBase,
+} from "../../../services/general/crud.service";
 
 export function ComplexUno() {
   const [numero, setNumero] = useState(0);

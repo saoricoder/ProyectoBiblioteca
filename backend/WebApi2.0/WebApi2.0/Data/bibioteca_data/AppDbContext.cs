@@ -1,23 +1,26 @@
-//using WebApi2._0.Data.contabilidad_data;
 using WebApi2._0.models.biblioteca;
+using Microsoft.EntityFrameworkCore;
 
-public class AppDbContext : DbContext
+namespace WebApi2._0.Data.bibioteca_data
 {
-    public DbSet<Autor> Autores { get; set; }
-    public DbSet<Libro> Libros { get; set; }
-    public DbSet<Prestamo> Prestamos { get; set; }
-    public DbSet<DetallePrestamo> DetallePrestamos { get; set; }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
     {
-        modelBuilder.Entity<Libro>()
-            .HasOne(l => l.Autor)
-            .WithMany()
-            .HasForeignKey(l => l.AutorCodigo);
+        public DbSet<Autor_models> Autores { get; set; }
+        public DbSet<Libro_models> Libros { get; set; }
+        public DbSet<Prestamo_models> Prestamos { get; set; }
+        public DbSet<DetallePrestamo_models> DetallePrestamos { get; set; }
 
-        modelBuilder.Entity<DetallePrestamo>()
-            .HasOne(d => d.Libro)
-            .WithMany()
-            .HasForeignKey(d => d.CodigoLibro);
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Libro_models>()
+                .HasOne(libro => libro.Autor)
+                .WithMany()
+                .HasForeignKey(libro => libro.AutorCodigo);
+
+            modelBuilder.Entity<DetallePrestamo_models>()
+                .HasOne(prestamo => prestamo.Libro)
+                .WithMany()
+                .HasForeignKey(prestamo => prestamo.CodigoLibro);
+        }
     }
 }

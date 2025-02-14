@@ -4,9 +4,8 @@ using WebApi2._0.models.contabilidad;
 
 namespace WebApi2._0.Data.contabilidad_data
 {
-    public class AppDbContext: DbContext
+    public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         // Definir las tablas en la base de datos
         public DbSet<Cuentas_models> Cuenta { get; set; }

@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { MenuHeader } from "../../../moduls/Menu_header";
-import { Insertar, ObtenerDatos } from "../../../moduls/useFetch";
+import { Insertar, ObtenerDatos } from "../../../services/general/useFetch";
 import {
   EliminarBase,
   BuscarBase,
   ModificarBase,
-} from "../../../moduls/crud.service";
+} from "../../../services/general/crud.service";
 
 export function SimpleDos() {
   const [codigo, setCodigo] = useState(0); //Codigo de la cuenta

@@ -24,7 +24,7 @@ namespace WebApi2._0.Data.contabilidad_data
                 comando.ExecuteNonQuery();
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -37,7 +37,7 @@ namespace WebApi2._0.Data.contabilidad_data
             string query = "SELECT * FROM cuenta";
             SqlCommand comando = new(query, conexion);
             SqlDataReader reader = comando.ExecuteReader();
-            List<Cuentas_models> lista = new();
+            List<Cuentas_models> lista = [];
             while (reader.Read())
             {
                 Cuentas_models cuenta = new()
@@ -84,7 +84,7 @@ namespace WebApi2._0.Data.contabilidad_data
                 comando.ExecuteNonQuery();
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -102,7 +102,7 @@ namespace WebApi2._0.Data.contabilidad_data
                 comando.ExecuteNonQuery();
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -151,7 +151,7 @@ namespace WebApi2._0.Data.contabilidad_data
                 }
 
                 using SqlDataReader reader = comando.ExecuteReader();
-                List<Cuentas_models> lista = new();
+                List<Cuentas_models> lista = [];
 
                 while (reader.Read())
                 {

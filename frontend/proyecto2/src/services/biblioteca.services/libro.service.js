@@ -1,11 +1,29 @@
-import axios from 'axios';
-
-const API_URL = 'http://localhost:5000/api/libro';
-
 export const getLibros = () => {
-    return axios.get(API_URL);
+  try {
+    console.log("get libro");
+  } catch (error) {
+    return {};
+  }
 };
 
 export const postLibro = (libro) => {
-    return axios.post(API_URL, libro);
+  try {
+    console.log("post Libro" + libro);
+  } catch (error) {
+    return {};
+  }
+};
+export const deleteLibro = (id) => {
+  try {
+    console.log("delete Libro" + id);
+  } catch (error) {
+    return {};
+  }
+};
+export const updateLibro = (libro) => {
+  try {
+    console.log("update Libro" + libro);
+  } catch (error) {
+    return {};
+  }
 };
