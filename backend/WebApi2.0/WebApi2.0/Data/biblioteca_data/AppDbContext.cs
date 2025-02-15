@@ -8,7 +8,7 @@ namespace WebApi2._0.Data.bibioteca_data
         public DbSet<Autor_models> Autores { get; set; }
         public DbSet<Libro_models> Libros { get; set; }
         public DbSet<Prestamo_models> Prestamos { get; set; }
-        public DbSet<DetallePrestamo_models> DetallePrestamos { get; set; }
+        public DbSet<DetallePrestamo_model> DetallePrestamos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -17,7 +17,7 @@ namespace WebApi2._0.Data.bibioteca_data
                 .WithMany()
                 .HasForeignKey(libro => libro.AutorCodigo);
 
-            modelBuilder.Entity<DetallePrestamo_models>()
+            modelBuilder.Entity<DetallePrestamo_model>()
                 .HasOne(prestamo => prestamo.Libro)
                 .WithMany()
                 .HasForeignKey(prestamo => prestamo.CodigoLibro);
