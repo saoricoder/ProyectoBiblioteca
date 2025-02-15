@@ -7,7 +7,7 @@ namespace WebApi2._0.models.biblioteca
         public DateTime FechaPrestamo { get; set; }
         public string? Descripcion { get; set; }
 
-        public List<DetallePrestamo_models>?Detalles{get;set;}
+        public List<DetallePrestamo_model>?Detalles{get;set;}
 
     }
 }
