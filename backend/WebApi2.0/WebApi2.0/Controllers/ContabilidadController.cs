@@ -7,14 +7,9 @@ namespace WebApi2._0.Controllers
 {
     [ApiController]
     [Route("/api/[controller]")]
-    public class ContabilidadController : Controller
+    public class ContabilidadController(AppDbContext context) : Controller
     {
-        private readonly AppDbContext _context;
-
-        public ContabilidadController(AppDbContext context)
-        {
-            _context = context;
-        }
+        private readonly AppDbContext _context = context;
 
         //GET: api/comprobante
         [HttpGet("comprobante")]
@@ -25,10 +20,31 @@ namespace WebApi2._0.Controllers
 
         //GET: api/comprobante/5
         [HttpGet("comprobante/{id}")]
-        public Comprobante_models GetComprobante(int id)
+        public IActionResult GetComprobante(int id)
         {
-            return Comprobante_data.ConsultarComprobante(id);
+            if (id <= 0)
+            {
+                return BadRequest("El ID proporcionado no es válido.");
+            }
+
+            try
+            {
+                var comprobante = Comprobante_data.ConsultarComprobante(id);
+
+                if (comprobante == null)
+                {
+                    return NotFound($"No se encontró un Comprobante con el ID {id}.");
+                }
+
+                return Ok(comprobante);
+            }
+            catch (Exception )
+            {
+                // Puedes registrar el error aquí si usas un logger
+                return StatusCode(500, "Ocurrió un error en el servidor. Inténtalo más tarde.");
+            }
         }
+
 
         //GET: api/comprobante/buscar
         [HttpGet("comprobante/buscar")]
@@ -128,10 +144,31 @@ namespace WebApi2._0.Controllers
 
         //GET: api/detalle_comprobante/5
         [HttpGet("detalle_comprobante/obtener/{id}")]
-        public Detalle_comprobante_models GetDetalle_Comprobante(int id)
+        public IActionResult GetDetalleComprobante(int id)
         {
-            return Detalle_comporbante_data.ConsultarDetalle(id);
+            if (id <= 0)
+            {
+                return BadRequest("El ID proporcionado no es válido.");
+            }
+
+            try
+            {
+                var detalleComprobante = Detalle_comporbante_data.ConsultarDetalle(id);
+
+                if (detalleComprobante == null)
+                {
+                    return NotFound($"No se encontró un Detalle de Comprobante con el ID {id}.");
+                }
+
+                return Ok(detalleComprobante);
+            }
+            catch (Exception)
+            {
+                // Puedes registrar el error aquí si usas un logger
+                return StatusCode(500, "Ocurrió un error en el servidor. Inténtalo más tarde.");
+            }
         }
+
 
         //GET: api/detalle_comprobante
         [HttpGet("detalle_comprobante/{id}")]
@@ -326,10 +363,31 @@ namespace WebApi2._0.Controllers
 
         //GET: api/tipodecuenta/5
         [HttpGet("tipodecuenta/{id}")]
-        public TipoDeCuenta_models GetTipoDeCuenta(int id)
+        public IActionResult GetTipoDeCuenta(int id)
         {
-            return TipoDeCuenta_data.ConsultarTipoDeCuenta(id);
+            if (id <= 0)
+            {
+                return BadRequest("El ID proporcionado no es válido.");
+            }
+
+            try
+            {
+                var tipoDeCuenta = TipoDeCuenta_data.ConsultarTipoDeCuenta(id);
+
+                if (tipoDeCuenta == null)
+                {
+                    return NotFound($"No se encontró un Tipo de Cuenta con el ID {id}.");
+                }
+
+                return Ok(tipoDeCuenta);
+            }
+            catch (Exception)
+            {
+                // Puedes agregar un logger aquí para registrar el error
+                return StatusCode(500, "Ocurrió un error en el servidor. Inténtalo más tarde.");
+            }
         }
+
 
         //GET: api/tipodecuenta/buscar
         [HttpGet("tipodecuenta/buscar")]

@@ -1,10 +1,10 @@
 ﻿using Microsoft.Data.SqlClient;
 using WebApi2._0.models.biblioteca;
-namespace WebApi2._0.Data.bibioteca_data
+namespace WebApi2._0.Data.biblioteca_data
 {
     public class Autor_data
     {
-        private static readonly string baseDatos = "master";
+        private static readonly string baseDatos = "BIBLIOTECA";
 
         // Insertar Autor
         public static bool InsertarAutor(Autor_models autor)
@@ -36,7 +36,7 @@ namespace WebApi2._0.Data.bibioteca_data
             string query = "SELECT * FROM Autores";
             SqlCommand comando = new(query, conexion);
             SqlDataReader reader = comando.ExecuteReader();
-            List<Autor_models> lista = new();
+            List<Autor_models> lista = [];
 
             while (reader.Read())
             {
@@ -51,7 +51,7 @@ namespace WebApi2._0.Data.bibioteca_data
         }
 
         // Consultar Autor por código
-        public static Autor_models ConsultarAutor(int codigo)
+        public static Autor_models? ConsultarAutor(int codigo)
         {
             using SqlConnection conexion = Conn_general.ObtenerConexion(baseDatos);
             conexion.Open();

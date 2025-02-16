@@ -350,14 +350,6 @@ C:\Users\User\Documents\GitHub\ProyectoSecretoXX\backend\WebApi2.0\WebApi2.0\obj
 C:\Users\User\Documents\GitHub\ProyectoSecretoXX\backend\WebApi2.0\WebApi2.0\obj\Debug\net8.0\ref\WebApi2.0.dll
 C:\Users\User\Documents\GitHub\ProyectoSecretoXX\backend\WebApi2.0\WebApi2.0\bin\Debug\net8.0\RabbitMQ.Client.dll
 >>>>>>> 761eb300c6812e1db35f8625ae1b167e916eef14
-C:\Users\Angelus\Documents\Programer\ProyectoSecretoXX\backend\WebApi2.0\WebApi2.0\obj\Debug\net8.0\WebApi2.0.csproj.AssemblyReference.cache
-C:\Users\Angelus\Documents\Programer\ProyectoSecretoXX\backend\WebApi2.0\WebApi2.0\obj\Debug\net8.0\WebApi2.0.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Angelus\Documents\Programer\ProyectoSecretoXX\backend\WebApi2.0\WebApi2.0\obj\Debug\net8.0\WebApi2.0.AssemblyInfoInputs.cache
-C:\Users\Angelus\Documents\Programer\ProyectoSecretoXX\backend\WebApi2.0\WebApi2.0\obj\Debug\net8.0\WebApi2.0.AssemblyInfo.cs
-C:\Users\Angelus\Documents\Programer\ProyectoSecretoXX\backend\WebApi2.0\WebApi2.0\obj\Debug\net8.0\WebApi2.0.csproj.CoreCompileInputs.cache
-C:\Users\Angelus\Documents\Programer\ProyectoSecretoXX\backend\WebApi2.0\WebApi2.0\obj\Debug\net8.0\WebApi2.0.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\Angelus\Documents\Programer\ProyectoSecretoXX\backend\WebApi2.0\WebApi2.0\obj\Debug\net8.0\WebApi2.0.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Angelus\Documents\Programer\ProyectoSecretoXX\backend\WebApi2.0\WebApi2.0\obj\Debug\net8.0\WebApi2.0.sourcelink.json
 C:\Users\Angelus\Documents\Programer\ProyectoSecretoXX\backend\WebApi2.0\WebApi2.0\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\Angelus\Documents\Programer\ProyectoSecretoXX\backend\WebApi2.0\WebApi2.0\bin\Debug\net8.0\appsettings.json
 C:\Users\Angelus\Documents\Programer\ProyectoSecretoXX\backend\WebApi2.0\WebApi2.0\bin\Debug\net8.0\WebApi2.0.staticwebassets.endpoints.json
@@ -508,6 +500,14 @@ C:\Users\Angelus\Documents\Programer\ProyectoSecretoXX\backend\WebApi2.0\WebApi2
 C:\Users\Angelus\Documents\Programer\ProyectoSecretoXX\backend\WebApi2.0\WebApi2.0\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\Angelus\Documents\Programer\ProyectoSecretoXX\backend\WebApi2.0\WebApi2.0\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Runtime.Caching.dll
 C:\Users\Angelus\Documents\Programer\ProyectoSecretoXX\backend\WebApi2.0\WebApi2.0\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+C:\Users\Angelus\Documents\Programer\ProyectoSecretoXX\backend\WebApi2.0\WebApi2.0\obj\Debug\net8.0\WebApi2.0.csproj.AssemblyReference.cache
+C:\Users\Angelus\Documents\Programer\ProyectoSecretoXX\backend\WebApi2.0\WebApi2.0\obj\Debug\net8.0\WebApi2.0.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Angelus\Documents\Programer\ProyectoSecretoXX\backend\WebApi2.0\WebApi2.0\obj\Debug\net8.0\WebApi2.0.AssemblyInfoInputs.cache
+C:\Users\Angelus\Documents\Programer\ProyectoSecretoXX\backend\WebApi2.0\WebApi2.0\obj\Debug\net8.0\WebApi2.0.AssemblyInfo.cs
+C:\Users\Angelus\Documents\Programer\ProyectoSecretoXX\backend\WebApi2.0\WebApi2.0\obj\Debug\net8.0\WebApi2.0.csproj.CoreCompileInputs.cache
+C:\Users\Angelus\Documents\Programer\ProyectoSecretoXX\backend\WebApi2.0\WebApi2.0\obj\Debug\net8.0\WebApi2.0.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Angelus\Documents\Programer\ProyectoSecretoXX\backend\WebApi2.0\WebApi2.0\obj\Debug\net8.0\WebApi2.0.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Angelus\Documents\Programer\ProyectoSecretoXX\backend\WebApi2.0\WebApi2.0\obj\Debug\net8.0\WebApi2.0.sourcelink.json
 C:\Users\Angelus\Documents\Programer\ProyectoSecretoXX\backend\WebApi2.0\WebApi2.0\obj\Debug\net8.0\scopedcss\bundle\WebApi2.0.styles.css
 C:\Users\Angelus\Documents\Programer\ProyectoSecretoXX\backend\WebApi2.0\WebApi2.0\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\Angelus\Documents\Programer\ProyectoSecretoXX\backend\WebApi2.0\WebApi2.0\obj\Debug\net8.0\staticwebassets.development.json

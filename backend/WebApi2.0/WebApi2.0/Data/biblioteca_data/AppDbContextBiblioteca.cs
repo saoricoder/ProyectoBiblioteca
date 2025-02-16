@@ -1,9 +1,9 @@
 using WebApi2._0.models.biblioteca;
 using Microsoft.EntityFrameworkCore;
 
-namespace WebApi2._0.Data.bibioteca_data
+namespace WebApi2._0.Data.biblioteca_data
 {
-    public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
+    public class AppDbContextBiblioteca(DbContextOptions<AppDbContextBiblioteca> options) : DbContext(options)
     {
         public DbSet<Autor_models> Autores { get; set; }
         public DbSet<Libro_models> Libros { get; set; }

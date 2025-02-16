@@ -1,11 +1,11 @@
 ﻿using Microsoft.Data.SqlClient;
 using WebApi2._0.models.biblioteca;
 
-namespace WebApi2._0.Data.bibioteca_data
+namespace WebApi2._0.Data.biblioteca_data
 {
     public class DetallePrestamos_data
     {
-        private static readonly string baseDatos = "master";
+        private static readonly string baseDatos = "BIBLIOTECA";
 
         // Insertar DetallePrestamo
         public static bool InsertarDetalle(DetallePrestamo_model detalle)
@@ -36,12 +36,12 @@ namespace WebApi2._0.Data.bibioteca_data
             string query = "SELECT * FROM DetallePrestamos";
             using SqlCommand comando = new(query, conexion);
             using SqlDataReader reader = comando.ExecuteReader();
-            List<DetallePrestamo_model> lista = new();
+            List<DetallePrestamo_model> lista = [];
             while (reader.Read())
             {
                 lista.Add(new DetallePrestamo_model()
                 {
-                    id = reader.GetInt32(0),
+                    Id = reader.GetInt32(0),
                     CodigoLibro = reader.GetInt32(1),
                     Cantidad = reader.GetInt32(2),
                     FechaEntrega = reader.GetDateTime(3)
@@ -51,7 +51,7 @@ namespace WebApi2._0.Data.bibioteca_data
         }
 
         // Consultar Detalle por ID
-        public static DetallePrestamo_model ConsultarDetalle(int id)
+        public static DetallePrestamo_model? ConsultarDetalle(int id)
         {
             using SqlConnection conexion = Conn_general.ObtenerConexion(baseDatos);
             conexion.Open();
@@ -63,7 +63,7 @@ namespace WebApi2._0.Data.bibioteca_data
             {
                 return new DetallePrestamo_model()
                 {
-                    id = reader.GetInt32(0),
+                    Id = reader.GetInt32(0),
                     CodigoLibro = reader.GetInt32(1),
                     Cantidad = reader.GetInt32(2),
                     FechaEntrega = reader.GetDateTime(3)

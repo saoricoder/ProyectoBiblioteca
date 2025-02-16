@@ -46,7 +46,7 @@ namespace WebApi2._0.Data.contabilidad_data
             string query = "SELECT * FROM tipodecuenta";
             SqlCommand comando = new(query, conexion);
             SqlDataReader reader = comando.ExecuteReader();
-            List<TipoDeCuenta_models> lista = new();
+            List<TipoDeCuenta_models> lista = [];
             while (reader.Read())
             {
                 TipoDeCuenta_models tipodecuenta = new()
@@ -61,7 +61,7 @@ namespace WebApi2._0.Data.contabilidad_data
 
 
         // ConsultarTipoDeCuenta
-        public static TipoDeCuenta_models ConsultarTipoDeCuenta(int codigo)
+        public static TipoDeCuenta_models? ConsultarTipoDeCuenta(int codigo)
         {
             using SqlConnection conexion = Conn_general.ObtenerConexion(baseDatos);
             conexion.Open();
@@ -184,7 +184,7 @@ namespace WebApi2._0.Data.contabilidad_data
                 }
 
                 using SqlDataReader reader = comando.ExecuteReader();
-                List<TipoDeCuenta_models> lista = new();
+                List<TipoDeCuenta_models> lista = [];
 
                 while (reader.Read())
                 {

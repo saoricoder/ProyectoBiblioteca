@@ -20,7 +20,7 @@ namespace WebApi2._0.Hubs
 
             if (!string.IsNullOrEmpty(userName))
             {
-                _userConnections[userName] = Context.ConnectionId ?? throw new ArgumentNullException(nameof(Context.ConnectionId));
+                _userConnections[userName] = Context.ConnectionId ??  throw new ArgumentNullException(nameof(Context.ConnectionId));
 
                 if (isAdmin.HasValue && isAdmin.Value == "true")
                 {
@@ -38,7 +38,7 @@ namespace WebApi2._0.Hubs
         }
 
 
-        public async Task SendMessageToAdmins(string user, string message)
+        public async Task? SendMessageToAdmins(string user, string message)
         {
             Console.WriteLine($"📩 Mensaje recibido en el servidor de {user}: {message}");
             await Clients.Group("Admins").SendAsync("ReceiveMessage", user, message);
@@ -48,7 +48,7 @@ namespace WebApi2._0.Hubs
             }
         }
 
-        public async Task SendMessageToUser(string targetUser, string message)
+        public async Task? SendMessageToUser(string targetUser, string message)
         {
             if (_userConnections.TryGetValue(targetUser, out var connectionId))
             {

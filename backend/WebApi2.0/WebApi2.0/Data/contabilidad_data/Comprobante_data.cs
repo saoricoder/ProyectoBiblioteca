@@ -40,7 +40,7 @@ namespace WebApi2._0.Data.contabilidad_data
             string query = "SELECT * FROM comprobante";
             SqlCommand comando = new(query, conexion);
             SqlDataReader reader = comando.ExecuteReader();
-            List<Comprobante_models> lista = new();
+            List<Comprobante_models> lista = [];
             while (reader.Read())
             {
                 Comprobante_models comprobante = new()
@@ -55,7 +55,7 @@ namespace WebApi2._0.Data.contabilidad_data
         }
 
         // Consultar Comprobante por código
-        public static Comprobante_models ConsultarComprobante(int codigo)
+        public static Comprobante_models? ConsultarComprobante(int codigo)
         {
             using SqlConnection conexion = Conn_general.ObtenerConexion(baseDatos);
             conexion.Open();
@@ -157,7 +157,7 @@ namespace WebApi2._0.Data.contabilidad_data
                 }
 
                 using SqlDataReader reader = comando.ExecuteReader();
-                List<Comprobante_models> lista = new();
+                List<Comprobante_models> lista = [];
 
                 while (reader.Read())
                 {

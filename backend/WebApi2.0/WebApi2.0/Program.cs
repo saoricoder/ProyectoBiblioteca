@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using WebApi2._0.Data.biblioteca_data;
 using WebApi2._0.Data.contabilidad_data;
 using WebApi2._0.Hubs;
 
@@ -18,6 +19,8 @@ builder.Services.AddSwaggerGen();
 // Configuración de SQL Server
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<AppDbContextBiblioteca>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("BibliotecaConnection")));
 
 // Configuración de CORS
 builder.Services.AddCors(options =>

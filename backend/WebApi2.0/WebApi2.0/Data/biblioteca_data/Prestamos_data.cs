@@ -1,12 +1,12 @@
 ﻿using WebApi2._0.models.biblioteca;
 using Microsoft.Data.SqlClient;
 
-namespace WebApi2._0.Data.bibioteca_data
+namespace WebApi2._0.Data.biblioteca_data
 {
 
     public class Prestamos_data
     {
-        private static readonly string baseDatos = "master";
+        private static readonly string baseDatos = "BIBLIOTECA";
 
         // Insertar Prestamo
         public static bool InsertarPrestamo(Prestamo_models prestamo)
@@ -39,7 +39,7 @@ namespace WebApi2._0.Data.bibioteca_data
             string query = "SELECT * FROM Prestamos";
             SqlCommand comando = new(query, conexion);
             SqlDataReader reader = comando.ExecuteReader();
-            List<Prestamo_models> lista = new();
+            List<Prestamo_models> lista = [];
             while (reader.Read())
             {
                 Prestamo_models prestamo = new()
@@ -54,7 +54,7 @@ namespace WebApi2._0.Data.bibioteca_data
         }
 
         // Consultar Prestamo por Numero
-        public static Prestamo_models ConsultarPrestamo(int numero)
+        public static Prestamo_models? ConsultarPrestamo(int numero)
         {
             using SqlConnection conexion = Conn_general.ObtenerConexion(baseDatos);
             conexion.Open();

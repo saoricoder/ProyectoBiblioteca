@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using WebApi2._0.Data.bibioteca_data;
 using WebApi2._0.models.biblioteca;
 
 using System.Collections.Generic;
+using WebApi2._0.Data.biblioteca_data;
 
 namespace WebApi2._0.Controllers
 {
@@ -20,7 +20,7 @@ namespace WebApi2._0.Controllers
 
         // GET: api/libros/5
         [HttpGet("libros/{isbn}")]
-        public Libro_models GetLibro(string isbn)
+        public Libro_models? GetLibro(string isbn)
         {
             return Libro_data.ConsultarLibro(isbn);
         }
@@ -55,7 +55,7 @@ namespace WebApi2._0.Controllers
 
         // GET: api/autores/5
         [HttpGet("autores/{codigo}")]
-        public Autor_models GetAutor(int codigo)
+        public Autor_models? GetAutor(int codigo)
         {
             return Autor_data.ConsultarAutor(codigo);
         }
@@ -90,7 +90,7 @@ namespace WebApi2._0.Controllers
 
         // GET: api/prestamos/5
         [HttpGet("prestamos/{numero}")]
-        public Prestamo_models GetPrestamo(int numero)
+        public Prestamo_models? GetPrestamo(int numero)
         {
             return Prestamos_data.ConsultarPrestamo(numero);
         }
@@ -125,7 +125,7 @@ namespace WebApi2._0.Controllers
 
         // GET: api/detalleprestamos/5
         [HttpGet("detalleprestamos/{id}")]
-        public DetallePrestamo_model GetDetallePrestamo(int id)
+        public DetallePrestamo_model? GetDetallePrestamo(int id)
         {
             return DetallePrestamos_data.ConsultarDetalle(id);
         }

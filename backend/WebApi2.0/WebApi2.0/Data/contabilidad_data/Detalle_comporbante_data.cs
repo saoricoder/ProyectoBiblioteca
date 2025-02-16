@@ -27,6 +27,7 @@ namespace WebApi2._0.Data.contabilidad_data
             }
             catch (Exception ex)
             {
+                Console.Error.WriteLine($"Error al guardar en la base de datos {ex.Message}");
                 return false;
             }
         }
@@ -39,7 +40,7 @@ namespace WebApi2._0.Data.contabilidad_data
             string query = "SELECT * FROM detalle_comprobante";
             SqlCommand comando = new(query, conexion);
             SqlDataReader reader = comando.ExecuteReader();
-            List<Detalle_comprobante_models> lista = new();
+            List<Detalle_comprobante_models> lista = [];
             while (reader.Read())
             {
                 Detalle_comprobante_models detalle = new()
@@ -57,7 +58,7 @@ namespace WebApi2._0.Data.contabilidad_data
         }
 
         //Consultar Detalle por numero
-        public static Detalle_comprobante_models ConsultarDetalle(int codigo)
+        public static Detalle_comprobante_models? ConsultarDetalle(int codigo)
         {
             using SqlConnection conexion = Conn_general.ObtenerConexion(baseDatos);
             conexion.Open();
@@ -90,7 +91,7 @@ namespace WebApi2._0.Data.contabilidad_data
             SqlCommand comando = new(query, conexion);
             comando.Parameters.AddWithValue("@numero", numero);
             SqlDataReader reader = comando.ExecuteReader();
-            List<Detalle_comprobante_models> lista = new();
+            List<Detalle_comprobante_models> lista = [];
             while (reader.Read())
             {
                 Detalle_comprobante_models detalle = new()
@@ -192,6 +193,7 @@ namespace WebApi2._0.Data.contabilidad_data
             }
             catch (Exception ex)
             {
+                Console.Error.WriteLine($"Error al eliminar el detalle con código {numero}: {ex.Message}");
                 return false;
             }
         }
@@ -239,7 +241,7 @@ namespace WebApi2._0.Data.contabilidad_data
                 }
 
                 using SqlDataReader reader = comando.ExecuteReader();
-                List<Detalle_comprobante_models> lista = new();
+                List<Detalle_comprobante_models> lista = [];
 
                 while (reader.Read())
                 {

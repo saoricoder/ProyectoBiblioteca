@@ -7,7 +7,7 @@ namespace WebApi2._0.Data
     {
         public static bool InsertarTaller(Taller Otaller)
         {
-            using SqlConnection conexion = new(Conexion.RutaConexion);
+            using SqlConnection conexion = new(ConexionNoUsado.RutaConexion);
             conexion.Open();
             string query = "INSERT INTO taller (codigo,nombre) VALUES (@codigo,@nombre)";
             SqlCommand comando = new(query, conexion);
@@ -26,7 +26,7 @@ namespace WebApi2._0.Data
         }
         public static List<Taller> ConsultarTalleres()
         {
-            using SqlConnection conexion = new(Conexion.RutaConexion);
+            using SqlConnection conexion = new(ConexionNoUsado.RutaConexion);
             conexion.Open();
             string query = "SELECT * FROM taller";
             SqlCommand comando = new(query, conexion);
@@ -47,7 +47,7 @@ namespace WebApi2._0.Data
 
         public static Taller ConsultarTaller(int codigo)
         {
-            using SqlConnection conexion = new(Conexion.RutaConexion);
+            using SqlConnection conexion = new(ConexionNoUsado.RutaConexion);
             conexion.Open();
             string query = "SELECT * FROM taller WHERE codigo = @codigo";
             SqlCommand comando = new(query, conexion);
@@ -64,7 +64,7 @@ namespace WebApi2._0.Data
 
         public static bool ActualizarTaller(int codigo, Taller oTaller)
         {
-            using SqlConnection conexion = new(Conexion.RutaConexion);
+            using SqlConnection conexion = new(ConexionNoUsado.RutaConexion);
             conexion.Open();
             string query = "UPDATE taller SET nombre = @nombre WHERE codigo = @codigo";
             SqlCommand comando = new(query, conexion);
@@ -82,7 +82,7 @@ namespace WebApi2._0.Data
         }
         public static bool EliminarTaller(int codigo)
         {
-            using SqlConnection conexion = new(Conexion.RutaConexion);
+            using SqlConnection conexion = new(ConexionNoUsado.RutaConexion);
             conexion.Open();
             string query = "DELETE FROM taller WHERE codigo = @codigo";
             SqlCommand comando = new(query, conexion);

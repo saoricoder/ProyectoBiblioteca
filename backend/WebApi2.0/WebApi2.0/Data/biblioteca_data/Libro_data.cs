@@ -2,12 +2,12 @@
 using Microsoft.Data.SqlClient;
 using WebApi2._0.models.biblioteca;
 
-namespace WebApi2._0.Data.bibioteca_data
+namespace WebApi2._0.Data.biblioteca_data
 {
- 
+
     public class Libro_data
     {
-        private static readonly string baseDatos = "master";
+        private static readonly string baseDatos = "BIBLIOTECA";
 
         public static bool InsertarLibro(Libro_models libro)
         {
