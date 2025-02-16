@@ -10,7 +10,7 @@ const AdminChat = () => {
   //const [userName, setUserName] = useState("");
   const [selectedUser, setSelectedUser] = useState(null);
 
-  const Url = "http://localhost:5261/chatHub";
+  const Url = "http://localhost:5286/chatHub";
 
   useEffect(() => {
     const generatedUserName = `admin_${

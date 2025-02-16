@@ -7,7 +7,7 @@ const HelpChat = () => {
   const [message, setMessage] = useState("");
   const [chatOpen, setChatOpen] = useState(false);
   const [userName, setUserName] = useState(""); // Guarda el nombre de usuario único
-  const Url = "http://localhost:5261/chatHub"; // URL del backend
+  const Url = "http://localhost:5286/chatHub"; // URL del backend
 
   useEffect(() => {
     setUserName("");
