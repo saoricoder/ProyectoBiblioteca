@@ -1,6 +1,7 @@
 
 import { Link } from "react-router-dom";
 import { MenuHeader } from "../../moduls/Menu_header";
+import "../../css/biblioteca/indexBiblio.css";
 
 export function IndexBiblio() {
   return (

@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { MenuHeader } from "../../../moduls/Menu_header";
 import {Insertar,Eliminar,ObtenerDatosPorId,BuscarPorParam,} from "../../../services/general/useFetch";
-
+//import "../../../css/biblioteca/AutorPage.css"; // Importar estilos
 export function AutorPage() {
-  const url = "http://localhost:5261/api/Biblioteca/autores"; // Asegúrate de que esta URL esté correcta.
+  const url = "http://localhost:7015/api/Biblioteca_controllers/autores"; // Asegúrate de que esta URL esté correcta.
 
   const [codigo, setCodigo] = useState(0); // Estado para almacenar el código
   const [nombre, setNombre] = useState(""); // Estado para almacenar el nombre

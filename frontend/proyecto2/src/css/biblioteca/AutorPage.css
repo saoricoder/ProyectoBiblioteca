@@ -1,0 +1,25 @@
+/* Asegurar que el texto sea visible */
+body {
+    background-color: #f4f4f4; /* Un fondo gris claro para mejor contraste */
+    color: #333; /* Texto oscuro */
+  }
+  
+  /* Contenedor del formulario */
+  .form_container {
+    background: white;
+    color: black; /* Texto negro */
+  }
+  
+  /* Labels */
+  .item_container label {
+    color: black; /* Asegurar que los labels sean visibles */
+  }
+  
+  /* Inputs */
+  .item_container input {
+    color: black; /* Texto dentro de los inputs */
+    background: #fff;
+    border: 1px solid #ccc;
+  }
+  
+  

@@ -1,29 +1,75 @@
-export const getLibros = () => {
+// libro.service.js
+
+// Función para obtener todos los libros
+export const getLibros = async () => {
   try {
-    console.log("get libro");
+    const response = await fetch("http://localhost:7015/api/Biblioteca_controllers/libros");
+    if (!response.ok) {
+      throw new Error("Error al obtener los libros");
+    }
+    const data = await response.json();
+    return { success: true, data };
   } catch (error) {
-    return {};
+    console.error("Error en getLibros:", error);
+    return { success: false, message: error.message };
   }
 };
 
-export const postLibro = (libro) => {
+// Función para crear un nuevo libro
+export const postLibro = async (libro) => {
   try {
-    console.log("post Libro" + libro);
+    const response = await fetch("http://localhost:7015/api/Biblioteca_controllers/libros", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(libro),
+    });
+    if (!response.ok) {
+      throw new Error("Error al crear el libro");
+    }
+    const data = await response.json();
+    return { success: true, data };
   } catch (error) {
-    return {};
+    console.error("Error en postLibro:", error);
+    return { success: false, message: error.message };
   }
 };
-export const deleteLibro = (id) => {
+
+// Función para eliminar un libro por su ISBN
+export const deleteLibro = async (isbn) => {
   try {
-    console.log("delete Libro" + id);
+    const response = await fetch(`http://localhost:7015/api/Biblioteca_controllers/libros/${isbn}`, {
+      method: "DELETE",
+    });
+    if (!response.ok) {
+      throw new Error("Error al eliminar el libro");
+    }
+    return { success: true, message: "Libro eliminado correctamente" };
   } catch (error) {
-    return {};
+    console.error("Error en deleteLibro:", error);
+    return { success: false, message: error.message };
   }
 };
-export const updateLibro = (libro) => {
+
+// Función para actualizar un libro
+export const updateLibro = async (isbn, libro) => {
   try {
-    console.log("update Libro" + libro);
+    const response = await fetch(`http://localhost:7015/api/Biblioteca_controllers/libros/${isbn}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(libro),
+    });
+    if (!response.ok) {
+      throw new Error("Error al actualizar el libro");
+    }
+    const data = await response.json();
+    return { success: true, data };
   } catch (error) {
-    return {};
+    console.error("Error en updateLibro:", error);
+    return { success: false, message: error.message };
   }
 };
+

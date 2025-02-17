@@ -1,0 +1,51 @@
+/* Estilos generales */
+.container {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+    padding: 20px;
+    min-height: 100vh;
+  }
+  
+  /* Título principal */
+  .title_index {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Contenedor del menú */
+  .container_cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  /* Lista de opciones */
+  .cont {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .cont_item {
+    background-color: #007bff;
+    margin: 10px 0;
+    padding: 12px;
+    border-radius: 8px;
+    width: 250px;
+    text-align: center;
+    transition: background 0.3s;
+  }
+  
+  .cont_item:hover {
+    background-color: #0056b3;
+  }
+  
+  .cont_item a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    display: block;
+  }
+  
