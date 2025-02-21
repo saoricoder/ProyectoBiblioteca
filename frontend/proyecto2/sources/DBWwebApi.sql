@@ -11,10 +11,13 @@ GO
 
 if not exists (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dbo' AND TABLE_NAME = 'USUARIOS')
 create table USUARIOS(
-Id VARCHAR(60) primary key IDENTITY,
-UserName varchar(60),
-Password varchar(60),
-Role VARCHAR(60)
+    Id VARCHAR(60) primary key IDENTITY,
+    UserName varchar(60),
+    Password varchar(60),
+    Role VARCHAR(60),
+    LoginAttempts INT DEFAULT 0 NOT NULL,  -- Contador de intentos fallidos, inicia en 0
+    LockoutEnd DATETIME NULL,              -- Fecha de finalización del bloqueo (puede ser NULL)
+    IsActive BIT DEFAULT 1 NOT NULL;       -- Indica si el usuario está activo (1=Activo, 0=Inactivo)
 )
 
 go
@@ -27,5 +30,6 @@ CREATE TABLE RefreshTokens (
     ExpirationDate DATETIME NOT NULL,
     CreatedAt DATETIME NOT NULL DEFAULT GETDATE(),
     UpdatedAt DATETIME NOT NULL DEFAULT GETDATE(),
+    IsRevoked BIT NOT NULL DEFAULT 0,
     CONSTRAINT FK_RefreshTokens_Users FOREIGN KEY (UserId) REFERENCES Usuarios(Id)
 );
