@@ -11,7 +11,7 @@ GO
 -- Creación de la tabla Autores
 IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dbo' AND TABLE_NAME = 'Autores')
 CREATE TABLE Autores(
-    Codigo INT PRIMARY KEY IDENTITY(1,1),
+    Codigo INT PRIMARY KEY,
     Nombre VARCHAR(100) NULL,
     Apellido VARCHAR(100) NULL
 )
@@ -20,20 +20,17 @@ GO
 -- Creación de la tabla Libros
 IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dbo' AND TABLE_NAME = 'Libros')
 CREATE TABLE Libros(
-    Codigo INT PRIMARY KEY IDENTITY(1,1),  -- Se agrega la columna Codigo como clave primaria
+    ISBN INT PRIMARY KEY,
     AutorCodigo INT NOT NULL,               -- Relacionamos con la tabla Autores
-    ISBN VARCHAR(20) NOT NULL,
     Titulo VARCHAR(255) NULL,
     ValorPrestamo DECIMAL(18, 2) NOT NULL,
-    FOREIGN KEY (AutorCodigo) REFERENCES Autores(Codigo),  -- Clave foránea a la tabla Autores
-    Autor VARCHAR(MAX)
 )
 GO
 
 -- Creación de la tabla Prestamos
 IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dbo' AND TABLE_NAME = 'Prestamos')
 CREATE TABLE Prestamos(
-    Numero INT PRIMARY KEY IDENTITY(1,1),
+    Numero INT PRIMARY KEY,
     FechaPrestamo DATETIME NOT NULL,
     Descripcion VARCHAR(255) NULL
 )
@@ -46,6 +43,6 @@ CREATE TABLE DetallePrestamos(
     CodigoLibro INT NOT NULL,  -- Relación con la tabla Libros
     Cantidad INT NOT NULL,
     FechaEntrega DATETIME NOT NULL,
-    FOREIGN KEY (CodigoLibro) REFERENCES Libros(Codigo)  -- Relación con la columna Codigo en Libros
+    FOREIGN KEY (CodigoLibro) REFERENCES Libros(ISBN)  -- Relación con la columna Codigo en Libros
 )
 GO

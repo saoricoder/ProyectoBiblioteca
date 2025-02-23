@@ -1,6 +1,5 @@
-import { MenuHeader } from "../../../moduls/Menu_header";
-import "../../../css/contabilidad/comprobante.css";
 import { useState, useEffect } from "react";
+import { MenuHeader } from "../../../moduls/Menu_header";
 import {
   Insertar,
   ObtenerDatos,
@@ -15,6 +14,7 @@ import {
   EliminarBase,
   ModificarBase,
 } from "../../../services/general/crud.service";
+import "../../../css/contabilidad/comprobante.css";
 
 export function ComplexUno() {
   const [numero, setNumero] = useState(0);
@@ -33,9 +33,9 @@ export function ComplexUno() {
   const [resultadoDetalle, setResultadoDetalle] = useState("");
   const [isLoading, setIsLoading] = useState(false); //Cargando
   const [isLoadingDetalle, setIsLoadingDetalle] = useState(false);
-  const urlcomprobante = "http://localhost:5261/api/Contabilidad/comprobante";
+  const urlcomprobante = "http://localhost:5286/api/Contabilidad/comprobante";
   const urldetalle =
-    "http://localhost:5261/api/Contabilidad/detalle_comprobante";
+    "http://localhost:5286/api/Contabilidad/detalle_comprobante";
   const [busqueda, setBusqueda] = useState([]);
 
   //funcion generar numero de comprobante
@@ -539,7 +539,7 @@ export function ComplexUno() {
   //funcion para cuenta llenada en la lista
   const fetchCuentas = async (id) => {
     setLoading(true); //iniciar el loading
-    const urlCuenta = "http://localhost:5261/api/Contabilidad/cuenta";
+    const urlCuenta = "http://localhost:5286/api/Contabilidad/cuenta";
     try {
       const response = await ObtenerDatos(urlCuenta);
       if (response.success) {
@@ -587,7 +587,7 @@ export function ComplexUno() {
             Cabecera Comprobante de Contabilidad
           </h2>
           <div className="table_comprobante">
-            <form action="" className="comprobante_form">
+            <form className="comprobante_form">
               <div className="form_item">
                 <label htmlFor="numero">Numero</label>
                 <input

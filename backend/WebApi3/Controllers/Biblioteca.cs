@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApi3.Data.Biblioteca_data;
+using WebApi3.Data.Contabilidad_data;
 using WebApi3.Models.Biblioteca_models;
 
 namespace WebApi3.Controllers
 {
     [ApiController]
     [Route("/api/[controller]")]
-    public class Biblioteca_controllers : Controller
+    public class Biblioteca : ControllerBase
     {
 
         // GET: api/libros
@@ -18,7 +19,7 @@ namespace WebApi3.Controllers
 
         // GET: api/libros/5
         [HttpGet("libros/{isbn}")]
-        public Libros_models? GetLibro(string isbn)
+        public Libros_models? GetLibro(int isbn)
         {
             return Libros_data.ConsultarLibro(isbn);
         }
@@ -42,6 +43,32 @@ namespace WebApi3.Controllers
         public bool DeleteLibro(string isbn)
         {
             return Libros_data.EliminarLibro(isbn);
+        }
+
+        //GET: api/Libro/buscar
+        [HttpGet("libros/buscar")]
+        public IActionResult GetBuscarLibro([FromQuery] int? isbn = null, [FromQuery] int? autorCodigo = null, [FromQuery] string? titulo = null)
+        {
+            try
+            {
+                // Llamar al método de datos con los parámetros opcionales.
+                var resultados = Libros_data.BuscarLibro(isbn, autorCodigo, titulo);
+
+                // Verificar si hay resultados.
+                if (resultados == null || resultados.Count == 0)
+                {
+                    // En lugar de retornar "NotFound", devolver "NoContent" para indicar que no hay resultados.
+                    return NoContent(); // 204 No Content
+                }
+
+                // Devolver resultados con estado 200 OK.
+                return Ok(resultados);
+            }
+            catch (Exception ex)
+            {
+                // Manejo de excepciones: devolver estado 500 con un mensaje de error detallado.
+                return StatusCode(500, new { message = "Ocurrió un error inesperado al procesar la solicitud de búsqueda de libros.", error = ex.Message });
+            }
         }
 
         // GET: api/autores
@@ -69,7 +96,34 @@ namespace WebApi3.Controllers
         [HttpPut("autores/{codigo}")]
         public bool PutAutor(int codigo, [FromBody] Autores_models autor)
         {
+            Console.WriteLine($"{ autor.Codigo}, {autor.Nombre}, {autor.Apellido}");
             return Autores_data.ActualizarAutor(codigo, autor);
+        }
+
+        //GET: api/autores/buscar
+        [HttpGet("autores/buscar")]
+        public IActionResult GetBuscarAutores([FromQuery] int? codigo = null, [FromQuery] string? nombre = null)
+        {
+            try
+            {
+                // Llamar al método de datos con los parámetros opcionales.
+                var resultados = Autores_data.BuscarAutor(codigo, nombre);
+
+                // Verificar si hay resultados.
+                if (resultados == null || resultados.Count == 0)
+                {
+                    // En lugar de NotFound, retornar un código 204 con un mensaje apropiado para indicar sin contenido.
+                    return NoContent(); // 204 No Content
+                }
+
+                // Devolver resultados con estado 200 OK.
+                return Ok(resultados);
+            }
+            catch (Exception ex)
+            {
+                // Manejo de errores: devolver 500 con mensaje de error detallado.
+                return StatusCode(500, new { message = "Ocurrió un error inesperado al procesar la solicitud.", error = ex.Message });
+            }
         }
 
         // DELETE: api/autores/5

@@ -8,7 +8,7 @@ namespace WebApi3.Controllers
 {
     [ApiController]
     [Route("/api/[controller]")]
-    public class Contabilidad_controllers(AppDbContext_contabilidad context) : Controller
+    public class Contabilidad(AppDbContext_contabilidad context) : ControllerBase
     {
         private readonly AppDbContext_contabilidad _context = context;
 

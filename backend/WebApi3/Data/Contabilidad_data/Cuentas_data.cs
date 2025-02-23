@@ -42,10 +42,10 @@ namespace WebApi3.Data.Contabilidad_data
             {
                 Cuentas_models cuenta = new()
                 {
-                    Codigo = reader.IsDBNull(1) ? 0 : reader.GetInt32(1),
-                    Nombre = reader.IsDBNull(2) ? string.Empty : reader.GetString(2),
-                    TipoDeCuenta = reader.IsDBNull(3) ? string.Empty : reader.GetString(3),
-                    Saldo = reader.IsDBNull(4) ? 0 : reader.GetDecimal(4),
+                    Codigo = reader.IsDBNull(0) ? 0 : reader.GetInt32(0),
+                    Nombre = reader.IsDBNull(1) ? string.Empty : reader.GetString(1),
+                    TipoDeCuenta = reader.IsDBNull(2) ? string.Empty : reader.GetString(2),
+                    Saldo = reader.IsDBNull(3) ? 0 : reader.GetDecimal(3),
                 };
                 lista.Add(cuenta);
             }

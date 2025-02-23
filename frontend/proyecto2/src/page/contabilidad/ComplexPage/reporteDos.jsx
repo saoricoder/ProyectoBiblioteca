@@ -14,7 +14,7 @@ export function ReporteDos() {
 
   useEffect(() => {
     // Llamada a la API con fetch
-    fetch("http://localhost:5261/api/Contabilidad/resultados")
+    fetch("http://localhost:5286/api/Contabilidad/resultados")
       .then((response) => {
         if (!response.ok) throw new Error("Error al obtener los datos");
         return response.json();

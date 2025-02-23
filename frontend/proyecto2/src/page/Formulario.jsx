@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import "../css/formulario.css";
 export function Formulario() {
@@ -6,6 +7,7 @@ export function Formulario() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
   const [exito, setExito] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,6 +20,7 @@ export function Formulario() {
     setExito(true);
     setPassword("");
     setUsuario("");
+    navigate("/home");
   };
   window.onload = function () {
     document.getElementsByName("usuario")[0].value = "";

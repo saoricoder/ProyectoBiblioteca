@@ -3,7 +3,7 @@
     public class Libros_models
     {
         public int AutorCodigo { get; set; }
-        public string? ISBN { get; set; }
+        public int? ISBN { get; set; }
         public string? Titulo { get; set; }
 
         public decimal ValorPrestamo { get; set; }

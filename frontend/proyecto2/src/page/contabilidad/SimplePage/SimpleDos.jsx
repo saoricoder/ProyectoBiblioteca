@@ -18,7 +18,7 @@ export function SimpleDos() {
   const [error, setError] = useState(null); //Error
   const [resultados, setResultados] = useState(""); //Resultado de la operacion
   const [isLoading, setIsLoading] = useState(false); //Cargando
-  const url = "http://localhost:5261/api/Contabilidad/cuenta";
+  const url = "http://localhost:5286/api/Contabilidad/cuenta";
   const [busqueda, setBusqueda] = useState([]);
 
   //Funcion para Generar el codigo
@@ -260,7 +260,7 @@ export function SimpleDos() {
   //obtener los tipos de cuenta para el llenada de la lista
   const fetchTiposCuenta = async () => {
     setLoading(true); // Iniciar loading
-    const urlTipoCuenta = "http://localhost:5261/api/Contabilidad/tipodecuenta";
+    const urlTipoCuenta = "http://localhost:5286/api/Contabilidad/tipodecuenta";
     try {
       const response = await ObtenerDatos(urlTipoCuenta); // Reemplaza con la URL de tu API
       if (response.success) {

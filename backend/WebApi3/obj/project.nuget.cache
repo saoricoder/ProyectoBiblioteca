@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8y8978UyLM8=",
+  "dgSpecHash": "NUeGSPCqNVM=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Angelus\\Documents\\Programer\\WebApi3\\WebApi3.csproj",
+  "projectFilePath": "C:\\Users\\Angelus\\Documents\\Programer\\ProyectoSecretoXX\\backend\\WebApi3\\WebApi3.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Angelus\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\Angelus\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
@@ -96,7 +96,8 @@
     "C:\\Users\\Angelus\\.nuget\\packages\\system.text.json\\9.0.2\\system.text.json.9.0.2.nupkg.sha512",
     "C:\\Users\\Angelus\\.nuget\\packages\\system.threading.channels\\8.0.0\\system.threading.channels.8.0.0.nupkg.sha512",
     "C:\\Users\\Angelus\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
-    "C:\\Users\\Angelus\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
+    "C:\\Users\\Angelus\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
+    "C:\\Users\\Angelus\\.nuget\\packages\\microsoft.net.sdk.compilers.toolset\\9.0.200\\microsoft.net.sdk.compilers.toolset.9.0.200.nupkg.sha512"
   ],
   "logs": []
 }

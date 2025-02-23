@@ -1,18 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { getLibros, postLibro, updateLibro, deleteLibro } from "../../../services/biblioteca.services/libro.service";
-import { getAutores } from "../../../services/biblioteca.services/autor.service";
 import { MenuHeader } from "../../../moduls/Menu_header";
-//import "../../../css/biblioteca/AutorPage.css"; // Importar estilos
+import { Insertar, ObtenerDatos } from "../../../services/general/useFetch";
+import {
+  BuscarBase,
+  EliminarBase,
+  ModificarBase,
+} from "../../../services/general/crud.service";
+
 export function LibroPage() {
-  const [libros, setLibros] = useState([]);
+  const API_URL =
+    process.env.REACT_APP_API_URL || "https://localhost:7015/api/";
+  const url = `${API_URL}Biblioteca/libros`; // Asegúrate de que esta URL esté correcta.
   const [autores, setAutores] = useState([]);
+  const [data, setData] = useState([]);
   const [isbn, setIsbn] = useState("");
   const [titulo, setTitulo] = useState("");
-  const [autorCodigo, setAutorCodigo] = useState("");
+  const [autorCodigo, setAutorCodigo] = useState(0);
   const [valorPrestamo, setValorPrestamo] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [resultados, setResultados] = useState([]);
+  const [busqueda, setBusqueda] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
   // Función para generar un ISBN automáticamente
@@ -21,166 +29,271 @@ export function LibroPage() {
     return isbnGenerado.toString();
   };
 
-  // Cargar libros y autores al montar el componente
-  useEffect(() => {
-    const cargarDatos = async () => {
-      try {
-        const resultLibros = await getLibros();
-        if (resultLibros.success) {
-          setLibros(resultLibros.data);
-        } else {
-          setError(resultLibros.message);
-        }
-
-        const resultAutores = await getAutores();
-        if (resultAutores.success) {
-          setAutores(resultAutores.data);
-        } else {
-          setError(resultAutores.message);
-        }
-      } catch (error) {
-        setError("Error al cargar los datos");
-        console.error(error);
-      }
+  const Guardar = async () => {
+    setError(null); // Limpiar errores previos
+    setResultados(""); // Limpiar resultados previos
+    // Validar que los campos no estén vacíos
+    if (!isbn || !autorCodigo || !titulo || !valorPrestamo) {
+      console.log("Debe completar los campos.");
+      setError("Debe completar los campos.");
+      return;
+    }
+    // Crear un objeto con los datos del libro
+    setIsLoading(true); // Deshabilitar el botón de guardar mientras se realiza la solicitud
+    const data = {
+      isbn,
+      autorCodigo,
+      titulo,
+      valorPrestamo,
     };
 
-    cargarDatos();
-    setIsbn(GenerarISBN()); // Generar un ISBN al cargar la página
-  }, []);
-
-  // Función para insertar un libro
-  const Insertar = async () => {
-    if (!isbn || !titulo || !autorCodigo || !valorPrestamo) {
-      setError("Debe completar todos los campos.");
-      return;
-    }
-
-    setIsLoading(true);
-    const libro = { ISBN: isbn, Titulo: titulo, AutorCodigo: autorCodigo, ValorPrestamo: valorPrestamo };
-
     try {
-      const result = await postLibro(libro);
+      const result = await Insertar("POST", url, data);
+
       if (result.success) {
-        setLibros([...libros, result.data]);
-        setIsbn(GenerarISBN()); // Generar un nuevo ISBN después de insertar
-        setTitulo("");
-        setAutorCodigo("");
-        setValorPrestamo("");
-        setError(null);
+        console.log(result.message);
       } else {
-        setError(result.message);
+        console.error(result.message, result.error);
+        setError(result.message || "Hubo un error al guardar los datos.");
       }
     } catch (error) {
-      setError("Error al insertar el libro");
-      console.error(error);
+      console.error("Error al guardar los datos:", error);
+      setError("Hubo un problema al intentar guardar los datos.");
     } finally {
-      setIsLoading(false);
+      setIsLoading(false); // Volver a habilitar el botón después de la solicitud
     }
   };
 
-  // Función para eliminar un libro
-  const Eliminar = async () => {
-    if (!isbn) {
-      setError("Debe ingresar un ISBN válido.");
-      return;
-    }
-
-    setIsLoading(true);
-    try {
-      const result = await deleteLibro(isbn);
-      if (result.success) {
-        const nuevosLibros = libros.filter((libro) => libro.ISBN !== isbn);
-        setLibros(nuevosLibros);
-        setIsbn(GenerarISBN()); // Generar un nuevo ISBN después de eliminar
-        setTitulo("");
-        setAutorCodigo("");
-        setValorPrestamo("");
-        setError(null);
-      } else {
-        setError(result.message);
-      }
-    } catch (error) {
-      setError("Error al eliminar el libro");
-      console.error(error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  // Función para modificar un libro
-  const Modificar = async () => {
-    if (!isbn || !titulo || !autorCodigo || !valorPrestamo) {
-      setError("Debe completar todos los campos.");
-      return;
-    }
-
-    setIsLoading(true);
-    const libro = { ISBN: isbn, Titulo: titulo, AutorCodigo: autorCodigo, ValorPrestamo: valorPrestamo };
-
-    try {
-      const result = await updateLibro(isbn, libro);
-      if (result.success) {
-        const nuevosLibros = libros.map((lib) => (lib.ISBN === isbn ? result.data : lib));
-        setLibros(nuevosLibros);
-        setIsbn(GenerarISBN()); // Generar un nuevo ISBN después de modificar
-        setTitulo("");
-        setAutorCodigo("");
-        setValorPrestamo("");
-        setError(null);
-      } else {
-        setError(result.message);
-      }
-    } catch (error) {
-      setError("Error al modificar el libro");
-      console.error(error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  // Función para buscar libros
-  const Buscar = async () => {
-    setLoading(true);
+  const ModificarDatos = async () => {
+    setLoading(true); // Empieza el loading
     setError(null);
+    setResultados("");
 
-    const isbnValue = isbn || "";
-    const tituloValue = titulo || "";
-    const autorCodigoValue = autorCodigo || "";
-    const valorPrestamoValue = valorPrestamo || "";
+    let params = {};
+
+    // Llenamos 'params' con los valores proporcionados
+
+    if (isbn && isbn !== "0") {
+      params.isbn = isbn;
+    }
+
+    if (autorCodigo) {
+      params.autorCodigo = autorCodigo;
+    }
+
+    if (titulo) {
+      params.titulo = titulo;
+    }
+
+    if (valorPrestamo) {
+      params.valorPrestamo = valorPrestamo;
+    }
+
+    // Validar que al menos uno de los parámetros fue proporcionado
+    if (Object.keys(params).length === 0) {
+      setLoading(false);
+      setError("Debe ingresar los parámetros para modificar.");
+      return;
+    }
 
     try {
-      const result = await getLibros();
-      if (result.success) {
-        const librosFiltrados = result.data.filter((libro) => {
-          return (
-            libro.ISBN.includes(isbnValue) &&
-            libro.Titulo.toLowerCase().includes(tituloValue.toLowerCase()) &&
-            libro.AutorCodigo.includes(autorCodigoValue) &&
-            libro.ValorPrestamo.toString().includes(valorPrestamoValue)
-          );
-        });
-        setResultados(librosFiltrados);
+      // Realizamos la solicitud PUT para modificar los datos
+      const result = await ModificarBase(url, params);
+      console.log("Modificando con parámetros:", {
+        params,
+      });
+      if (result && result.success) {
+        // Si la modificación fue exitosa
+        console.log("Datos modificados exitosamente.");
+        setResultados("Datos modificados con éxito.");
+        setData(result.data); // Muestra los datos modificados
       } else {
-        setError(result.message);
+        // Si hubo un error durante la actualización
+        console.log(result?.message || "Error al modificar los datos.");
+        setResultados(result?.message || "Error desconocido.");
+        setError(null);
       }
     } catch (error) {
-      setError("Error al buscar libros");
-      console.error(error);
-    } finally {
+      console.log("Error en la modificación:", error);
+      setError("Ocurrió un error al intentar modificar los datos.");
+    }
+
+    setLoading(false); // Detener loading
+    setAutorCodigo("");
+    setTitulo("");
+    setValorPrestamo("");
+    setIsbn(GenerarISBN());
+  };
+
+  //buscar datos
+  const Buscar = async () => {
+    setBusqueda([]);
+    setData([]);
+    // Iniciar estados de carga y limpiar cualquier error previo
+    setLoading(true);
+    setIsLoading(true);
+    setError(null);
+    setResultados("");
+
+    // Inicializar parámetros de búsqueda
+    let params = {};
+
+    // Llenar 'params' solo con los valores proporcionados
+    if (isbn && isbn !== "0") {
+      params.isbn = isbn;
+    }
+
+    if (titulo) {
+      params.titulo = titulo;
+    }
+
+    if (autorCodigo && autorCodigo !== "todos") {
+      // Añadir el tipo de cuenta si se ha proporcionado
+      params.autorCodigo = parseInt(autorCodigo);
+    }
+
+    // Validar que al menos uno de los parámetros fue proporcionado
+    if (Object.keys(params).length === 0) {
       setLoading(false);
+      setIsLoading(false);
+      setError(
+        "Debe ingresar un código, un nombre o un Autor para realizar la búsqueda."
+      );
+      return;
+    }
+
+    console.log("Buscando con parámetros:", {
+      isbn,
+      titulo,
+      autorCodigo,
+    });
+    try {
+      // Llamar a la función de búsqueda con los parámetros
+      const result = await BuscarBase(url, params);
+
+      console.log("Resultado de la búsqueda:", result);
+      // Aquí podrías manejar los resultados de la búsqueda, si es necesario
+      if (result && result.success) {
+        console.log("Resultados de la búsqueda:", result.data);
+        setData(result.data);
+        setBusqueda(params);
+      } else {
+        console.log(result.message || "No se encontraron resultados.");
+        setResultados(result.message || "No se encontraron resultados.");
+      }
+    } catch (error) {
+      console.error("Error al realizar la búsqueda:", error);
+      setError("Ocurrió un error al realizar la búsqueda.");
+    } finally {
+      // Detener los estados de carga, sin importar si hubo éxito o error
+      setLoading(false);
+      setIsLoading(false);
     }
   };
+
+  //Obtner libros para llenar en la lista
+  const fetchObtenerAutores = async () => {
+    setLoading(true); // Iniciar loading
+    const urlAutores = "https://localhost:7015/api/Biblioteca/autores";
+    try {
+      const response = await ObtenerDatos(urlAutores); // Reemplaza con la URL de tu API
+      if (response.success) {
+        // Asumiendo que la API devuelve un array de objetos con 'id' y 'nombre'
+        setAutores(response.data); // Establecer los datos de la respuesta
+        console.log("Autores cargados:", response.data);
+      } else {
+        setError("Hubo un error al cargar los datos.");
+        console.error(response.message); // Mostrar el mensaje de error retornado por ObtenerDatos
+      }
+    } catch (error) {
+      setError("Hubo un error al cargar los datos.");
+      console.error(error);
+    } finally {
+      setLoading(false); // Finalizar carga
+    }
+  };
+
+  //Funcion Eliminar
+  const EliminarDatos = async () => {
+    if (!isbn || isbn === "0") {
+      console.log("No se ha ingresado un código");
+      return;
+    }
+    console.log("Eliminando código:", isbn);
+    await EliminarBase(url, isbn);
+    setIsbn(GenerarISBN());
+    setAutorCodigo("");
+    setTitulo("");
+    setValorPrestamo("");
+    await ActualizarDatos();
+  };
+
+  //editar datos boton
+  const editar = (isbn, titulo, autor, valorPrestamo) => {
+    console.log("Editar código:", isbn);
+    console.log("Editar nombre:", titulo);
+    // Implementar la lógica de edición aquí
+    setIsbn(isbn);
+    setTitulo(titulo);
+    setAutorCodigo(autor);
+    setValorPrestamo(valorPrestamo);
+  };
+
+  //actualiozar datos
+  const ActualizarDatos = async () => {
+    if (Object.keys(busqueda).length === 0) {
+      setData([]);
+      return;
+    }
+    try {
+      // Llamar a la función de búsqueda con los parámetros
+      const result = await BuscarBase(url, busqueda);
+
+      console.log("Resultado de la búsqueda:", result);
+      // Aquí podrías manejar los resultados de la búsqueda, si es necesario
+      if (result && result.success) {
+        console.log("Resultados de la búsqueda:", result.data);
+        setData(result.data);
+        setBusqueda(busqueda);
+      } else {
+        console.log(result.message || "No se encontraron resultados.");
+        setResultados("");
+        setBusqueda([]);
+        setData([]);
+      }
+    } catch (error) {
+      console.error("Error al realizar la búsqueda:", error);
+      setError("Ocurrió un error al realizar la búsqueda.");
+    } finally {
+      // Detener los estados de carga, sin importar si hubo éxito o error
+      setLoading(false);
+      setIsLoading(false);
+    }
+  };
+
+  //eliminar datos boton
+  const EliminarDatosBoton = async (codigo) => {
+    console.log("Eliminar código:", codigo);
+
+    // Implementar la lógica de eliminación aquí
+    await EliminarBase(url, codigo);
+    await ActualizarDatos();
+    setIsbn(GenerarISBN());
+    setTitulo("");
+    setAutorCodigo("");
+    setValorPrestamo("");
+  };
+
+  // Cargar libros y autores al montar el componente
+  useEffect(() => {
+    setIsbn(GenerarISBN()); // Generar un ISBN al cargar la página
+    fetchObtenerAutores();
+  }, []);
 
   return (
     <div className="container">
-              <MenuHeader
-                title1="Atras"
-                link1="/biblioteca"
-                title2="Home"
-                link2="/"
-              />
+      <MenuHeader title1="Atras" link1="/biblioteca" title2="Home" link2="/" />
       <h1>Libros</h1>
-      {error && <p style={{ color: "red" }}>{error}</p>}
       <div className="form_container">
         <form className="form_libros">
           <div className="item_container">
@@ -205,20 +318,32 @@ export function LibroPage() {
           </div>
           <div className="item_container">
             <label htmlFor="autor">Autor</label>
-            <select
-              name="autor"
-              id="autor"
-              value={autorCodigo}
-              onChange={(e) => setAutorCodigo(e.target.value)}
-            >
-              <option value="">Seleccionar Autor</option>
-              {autores.map((autor) => (
-                <option key={autor.Codigo} value={autor.Codigo}>
-                  {autor.Nombre} {autor.Apellido}
+            {autores.length > 0 ? (
+              <select
+                name="autor"
+                id="autor"
+                value={autorCodigo}
+                onChange={(e) => setAutorCodigo(e.target.value)}
+                defaultValue=""
+              >
+                <option key="default" value="">
+                  Seleccionar Autor
                 </option>
-              ))}
-            </select>
+                {autores.map((autor) => (
+                  <option key={autor.codigo} value={autor.codigo}>
+                    {autor.nombre} {autor.apellido}
+                  </option>
+                ))}
+              </select>
+            ) : (
+              <select name="autor" id="autor">
+                <option key="no-data" value="Vacio">
+                  No hay datos
+                </option>
+              </select>
+            )}
           </div>
+
           <div className="item_container">
             <label htmlFor="valorPrestamo">Valor Préstamo</label>
             <input
@@ -232,19 +357,19 @@ export function LibroPage() {
           <input
             type="button"
             value="Insertar"
-            onClick={Insertar}
+            onClick={Guardar}
             disabled={isLoading}
           />
           <input
             type="button"
             value="Eliminar"
-            onClick={Eliminar}
+            onClick={EliminarDatos}
             disabled={isLoading}
           />
           <input
             type="button"
             value="Modificar"
-            onClick={Modificar}
+            onClick={ModificarDatos}
             disabled={isLoading}
           />
           <input
@@ -256,30 +381,47 @@ export function LibroPage() {
         </form>
       </div>
       <div className="resultado">
-        {loading && <p>Cargando...</p>}
-        {resultados.length > 0 ? (
+        {/* Mostramos el loading mientras se buscan los datos */}
+        {loading && <p>Loading...</p>}
+
+        {/* Mostramos el error si existe */}
+        {error && <p>Error: {error}</p>}
+
+        {/* Mostramos la tabla solo si hay datos */}
+        {Array.isArray(data) && data.length > 0 ? (
           <table>
             <thead>
               <tr>
                 <th>ISBN</th>
-                <th>Título</th>
+                <th>Titulo</th>
                 <th>Autor</th>
                 <th>Valor Préstamo</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
-              {resultados.map((libro) => (
-                <tr key={libro.ISBN}>
-                  <td>{libro.ISBN}</td>
-                  <td>{libro.Titulo}</td>
-                  <td>{libro.Autor.Nombre} {libro.Autor.Apellido}</td>
-                  <td>{libro.ValorPrestamo}</td>
+              {data.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.isbn}</td>
+                  <td>{item.autorCodigo}</td>
+                  <td>{item.titulo}</td>
+                  <td>{item.valorPrestamo}</td>
+                  <td>
+                    {/* Botones para editar y eliminar */}
+                    <button onClick={() => editar(item.codigo, item.nombre)}>
+                      Editar
+                    </button>
+                    <button onClick={() => EliminarDatosBoton(item.codigo)}>
+                      Eliminar
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>
           </table>
         ) : (
-          <p>No hay resultados para mostrar.</p>
+          // Mostrar un mensaje si no hay datos
+          resultados && <p>{resultados}</p>
         )}
       </div>
     </div>

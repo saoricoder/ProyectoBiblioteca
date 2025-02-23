@@ -1,5 +1,7 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using System.Data;
+using Microsoft.Data.SqlClient;
 using WebApi3.Models.Biblioteca_models;
+using WebApi3.Models.Contabilidad_models;
 
 namespace WebApi3.Data.Biblioteca_data
 {
@@ -42,7 +44,7 @@ namespace WebApi3.Data.Biblioteca_data
             {
                 Libros_models libro = new()
                 {
-                    ISBN = reader.GetString(0),
+                    ISBN = reader.GetInt32(0),
                     Titulo = reader.GetString(1),
                     AutorCodigo = reader.GetInt32(2),
                     ValorPrestamo = reader.GetDecimal(3)
@@ -52,7 +54,7 @@ namespace WebApi3.Data.Biblioteca_data
             return lista;
         }
 
-        public static Libros_models? ConsultarLibro(string isbn)
+        public static Libros_models? ConsultarLibro(int isbn)
         {
             using SqlConnection conexion = ConnGeneral.ObtenerConexion(baseDatos);
             conexion.Open();
@@ -65,9 +67,9 @@ namespace WebApi3.Data.Biblioteca_data
             {
                 return new Libros_models
                 {
-                    ISBN = reader.GetString(0),
-                    Titulo = reader.GetString(1),
-                    AutorCodigo = reader.GetInt32(2),
+                    ISBN = reader.GetInt32(0),
+                    AutorCodigo = reader.GetInt32(1),
+                    Titulo = reader.GetString(2),
                     ValorPrestamo = reader.GetDecimal(3)
                 };
             }
@@ -112,6 +114,76 @@ namespace WebApi3.Data.Biblioteca_data
             catch (Exception)
             {
                 return false;
+            }
+        }
+
+        //Buscar Libro
+        public static List<Libros_models>? BuscarLibro(int? isbn = null, int? autorCodigo = null, string? titulo = null)
+        {
+            try
+            {
+                using SqlConnection conexion = ConnGeneral.ObtenerConexion(baseDatos);
+                conexion.Open();
+
+                string query = "SELECT ISBN AS isbn, AutorCodigo AS AutorCodigo, Titulo AS Titulo, ValorPrestamo AS ValorPrestamo FROM Libros WHERE 1=1";
+
+                if (isbn.HasValue)
+                {
+                    query += " AND isbn = @isbn";
+                }
+
+                if (autorCodigo.HasValue)
+                {
+                    query += " AND AutorCodigo = @autorCodigo";
+                }
+
+                if (!string.IsNullOrEmpty(titulo))
+                {
+                    query += " AND Titulo LIKE @titulo";
+                }
+
+                using SqlCommand comando = new(query, conexion);
+
+                if (isbn.HasValue)
+                {
+                    comando.Parameters.Add(new SqlParameter("@isbn", SqlDbType.Int) { Value = isbn.Value });
+                }
+
+                if (autorCodigo.HasValue)
+                {
+                    comando.Parameters.Add(new SqlParameter("@autorCodigo", SqlDbType.Int) { Value = autorCodigo.Value });
+                }
+
+                if (!string.IsNullOrEmpty(titulo))
+                {
+                    comando.Parameters.Add(new SqlParameter("@titulo", SqlDbType.NVarChar) { Value = $"%{titulo}%" });
+                }
+
+                using SqlDataReader reader = comando.ExecuteReader();
+                List<Libros_models> lista = [];
+
+                while (reader.Read())
+                {
+                    Libros_models libro = new()
+                    {
+                        ISBN = reader.GetInt32(reader.GetOrdinal("ISBN")),
+                        AutorCodigo = reader.GetInt32(reader.GetOrdinal("AutorCodigo")),
+                        Titulo = reader.IsDBNull(reader.GetOrdinal("Titulo")) ? string.Empty : reader.GetString(reader.GetOrdinal("Titulo")),
+                        ValorPrestamo = reader.GetDecimal(reader.GetOrdinal("ValorPrestamo"))
+                    };
+
+                    lista.Add(libro);
+                }
+
+                return lista; // Retorna null si no se encuentran resultados
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error en la base de datos: " + ex.Message, ex);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error general: " + ex.Message, ex);
             }
         }
     }

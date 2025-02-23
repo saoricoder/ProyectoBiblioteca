@@ -1,81 +1,75 @@
-.container {
-    padding: 20px;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .title {
-    text-align: center;
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .form_container {
-    background: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .form_libros .item_container {
-    margin-bottom: 15px;
-  }
-  
-  .form_libros label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-  .form_libros input,
-  .form_libros select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .form_libros input[type="button"] {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    margin-right: 10px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .form_libros input[type="button"]:hover {
-    background: #0056b3;
-  }
-  
-  .resultado table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  .resultado th,
-  .resultado td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  .resultado th {
-    background: #f2f2f2;
-  }
-  
-  .resultado button {
-    background: #28a745;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-right: 5px;
-  }
-  
-  .resultado button:hover {
-    background: #218838;
-  }
+.title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.form_container {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form_libros .item_container {
+  margin-bottom: 15px;
+}
+
+.form_libros label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form_libros input,
+.form_libros select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form_libros input[type="button"] {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin-right: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form_libros input[type="button"]:hover {
+  background: #0056b3;
+}
+
+.resultado table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.resultado th,
+.resultado td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.resultado th {
+  background: #f2f2f2;
+}
+
+.resultado button {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.resultado button:hover {
+  background: #218838;
+}

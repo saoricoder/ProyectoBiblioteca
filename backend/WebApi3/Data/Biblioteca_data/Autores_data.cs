@@ -1,5 +1,7 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using System.Data;
+using Microsoft.Data.SqlClient;
 using WebApi3.Models.Biblioteca_models;
+using WebApi3.Models.Contabilidad_models;
 
 namespace WebApi3.Data.Biblioteca_data
 {
@@ -80,7 +82,15 @@ namespace WebApi3.Data.Biblioteca_data
             comando.Parameters.AddWithValue("@nombre", autor.Nombre);
             comando.Parameters.AddWithValue("@apellido", autor.Apellido);
 
-            return comando.ExecuteNonQuery() > 0;
+            try
+            {
+                comando.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         // Eliminar Autor
@@ -93,6 +103,75 @@ namespace WebApi3.Data.Biblioteca_data
             comando.Parameters.AddWithValue("@codigo", codigo);
 
             return comando.ExecuteNonQuery() > 0;
+        }
+
+        //Buscar Autor
+        public static List<Autores_models>? BuscarAutor(int? codigo = null, string? nombre = null, string? apellido = null)
+        {
+            try
+            {
+                using SqlConnection conexion = ConnGeneral.ObtenerConexion(baseDatos);
+                conexion.Open();
+
+                string query = "SELECT codigo AS Codigo, nombre AS Nombre, apellido AS apellido FROM autores WHERE 1=1";
+
+                if (codigo.HasValue)
+                {
+                    query += " AND codigo = @codigo";
+                }
+
+                if (!string.IsNullOrEmpty(nombre))
+                {
+                    query += " AND nombre LIKE @nombre";
+                }
+
+                if (!string.IsNullOrEmpty(apellido))
+                {
+                    query += " AND apellido LIKE @apellido";
+                }
+
+                using SqlCommand comando = new(query, conexion);
+
+                if (codigo.HasValue)
+                {
+                    comando.Parameters.Add(new SqlParameter("@codigo", SqlDbType.Int) { Value = codigo.Value });
+                }
+
+                if (!string.IsNullOrEmpty(nombre))
+                {
+                    comando.Parameters.Add(new SqlParameter("@nombre", SqlDbType.NVarChar) { Value = $"%{nombre}%" });
+                }
+
+                if (!string.IsNullOrEmpty(apellido))
+                {
+                    comando.Parameters.Add(new SqlParameter("@apellido", SqlDbType.NVarChar) { Value = $"%{apellido}%" });
+                }
+
+                using SqlDataReader reader = comando.ExecuteReader();
+                List<Autores_models> lista = [];
+
+                while (reader.Read())
+                {
+                    Autores_models autores = new()
+                    {
+                        Codigo = reader.GetInt32(reader.GetOrdinal("Codigo")),
+                        Nombre = reader.IsDBNull(reader.GetOrdinal("Nombre")) ? string.Empty : reader.GetString(reader.GetOrdinal("Nombre")),
+                        Apellido = reader.IsDBNull(reader.GetOrdinal("Apellido")) ? string.Empty : reader.GetString(reader.GetOrdinal("Apellido"))
+                    };
+
+                    lista.Add(autores);
+                }
+
+                return lista; // Retorna null si no se encuentran resultados
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error en la base de datos: " + ex.Message, ex);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error general: " + ex.Message, ex);
+            }
         }
     }
 }

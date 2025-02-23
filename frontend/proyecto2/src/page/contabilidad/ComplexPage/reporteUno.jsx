@@ -11,7 +11,7 @@ export function ReporteUno() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5261/api/contabilidad/balance")
+    fetch("http://localhost:5286/api/contabilidad/balance")
       .then((res) => {
         if (!res.ok) throw new Error("Error al obtener los datos");
         return res.json();

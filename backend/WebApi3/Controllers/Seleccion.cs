@@ -2,7 +2,7 @@
 
 namespace WebApi3.Controllers
 {
-    public class Nomina_controllers : Controller
+    public class Seleccion : Controller
     {
         public IActionResult Index()
         {

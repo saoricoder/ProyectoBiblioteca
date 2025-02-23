@@ -23,10 +23,7 @@ export function Menu() {
             <Link to="/seleccion">Seleccion</Link>
           </li>
         </ul>
-        <div className="chatHub">
-          <HelpChat />
-          {/*  <ChatAyuda /> */}
-        </div>
+        <HelpChat />
       </div>
     </div>
   );

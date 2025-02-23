@@ -8,7 +8,9 @@ import {
 } from "../../../services/general/useFetch";
 
 export function SimpleUno() {
-  const url = "http://localhost:5261/api/Contabilidad/tipodecuenta";
+  const API_URL =
+    process.env.REACT_APP_API_URL || "https://localhost:7015/api/";
+  const url = `${API_URL}Contabilidad/tipodecuenta`;
 
   const [codigo, setCodigo] = useState(0); // Estado para almacenar el código
   const [nombre, setNombre] = useState(""); // Estado para almacenar el nombre
@@ -377,8 +379,6 @@ export function SimpleUno() {
 
         {/* Mostramos el error si existe */}
         {error && <p>Error: {error}</p>}
-        {/* Mostramos los resultados de la búsqueda */}
-        {resultados && <p>{resultados}</p>}
 
         {/* Mostramos la tabla solo si hay datos */}
         {Array.isArray(data) && data.length > 0 ? (
@@ -409,7 +409,8 @@ export function SimpleUno() {
             </tbody>
           </table>
         ) : (
-          ""
+          /* Mostramos los resultados de la búsqueda */
+          resultados && <p>{resultados}</p>
         )}
       </div>
     </div>

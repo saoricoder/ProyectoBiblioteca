@@ -5,10 +5,10 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/Biblioteca_controllers/libros": {
+    "/api/Biblioteca/libros": {
       "get": {
         "tags": [
-          "Biblioteca_controllers"
+          "Biblioteca"
         ],
         "responses": {
           "200": {
@@ -44,7 +44,7 @@
       },
       "post": {
         "tags": [
-          "Biblioteca_controllers"
+          "Biblioteca"
         ],
         "requestBody": {
           "content": {
@@ -89,10 +89,10 @@
         }
       }
     },
-    "/api/Biblioteca_controllers/libros/{isbn}": {
+    "/api/Biblioteca/libros/{isbn}": {
       "get": {
         "tags": [
-          "Biblioteca_controllers"
+          "Biblioteca"
         ],
         "parameters": [
           {
@@ -100,7 +100,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "format": "int32"
             }
           }
         ],
@@ -129,7 +130,7 @@
       },
       "put": {
         "tags": [
-          "Biblioteca_controllers"
+          "Biblioteca"
         ],
         "parameters": [
           {
@@ -185,7 +186,7 @@
       },
       "delete": {
         "tags": [
-          "Biblioteca_controllers"
+          "Biblioteca"
         ],
         "parameters": [
           {
@@ -221,10 +222,47 @@
         }
       }
     },
-    "/api/Biblioteca_controllers/autores": {
+    "/api/Biblioteca/libros/buscar": {
       "get": {
         "tags": [
-          "Biblioteca_controllers"
+          "Biblioteca"
+        ],
+        "parameters": [
+          {
+            "name": "isbn",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "autorCodigo",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "titulo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Biblioteca/autores": {
+      "get": {
+        "tags": [
+          "Biblioteca"
         ],
         "responses": {
           "200": {
@@ -260,7 +298,7 @@
       },
       "post": {
         "tags": [
-          "Biblioteca_controllers"
+          "Biblioteca"
         ],
         "requestBody": {
           "content": {
@@ -305,10 +343,10 @@
         }
       }
     },
-    "/api/Biblioteca_controllers/autores/{codigo}": {
+    "/api/Biblioteca/autores/{codigo}": {
       "get": {
         "tags": [
-          "Biblioteca_controllers"
+          "Biblioteca"
         ],
         "parameters": [
           {
@@ -346,7 +384,7 @@
       },
       "put": {
         "tags": [
-          "Biblioteca_controllers"
+          "Biblioteca"
         ],
         "parameters": [
           {
@@ -403,7 +441,7 @@
       },
       "delete": {
         "tags": [
-          "Biblioteca_controllers"
+          "Biblioteca"
         ],
         "parameters": [
           {
@@ -440,10 +478,39 @@
         }
       }
     },
-    "/api/Biblioteca_controllers/prestamos": {
+    "/api/Biblioteca/autores/buscar": {
       "get": {
         "tags": [
-          "Biblioteca_controllers"
+          "Biblioteca"
+        ],
+        "parameters": [
+          {
+            "name": "codigo",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "nombre",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Biblioteca/prestamos": {
+      "get": {
+        "tags": [
+          "Biblioteca"
         ],
         "responses": {
           "200": {
@@ -479,7 +546,7 @@
       },
       "post": {
         "tags": [
-          "Biblioteca_controllers"
+          "Biblioteca"
         ],
         "requestBody": {
           "content": {
@@ -524,10 +591,10 @@
         }
       }
     },
-    "/api/Biblioteca_controllers/prestamos/{numero}": {
+    "/api/Biblioteca/prestamos/{numero}": {
       "get": {
         "tags": [
-          "Biblioteca_controllers"
+          "Biblioteca"
         ],
         "parameters": [
           {
@@ -565,7 +632,7 @@
       },
       "put": {
         "tags": [
-          "Biblioteca_controllers"
+          "Biblioteca"
         ],
         "parameters": [
           {
@@ -622,7 +689,7 @@
       },
       "delete": {
         "tags": [
-          "Biblioteca_controllers"
+          "Biblioteca"
         ],
         "parameters": [
           {
@@ -659,10 +726,10 @@
         }
       }
     },
-    "/api/Biblioteca_controllers/detalleprestamos": {
+    "/api/Biblioteca/detalleprestamos": {
       "get": {
         "tags": [
-          "Biblioteca_controllers"
+          "Biblioteca"
         ],
         "responses": {
           "200": {
@@ -698,7 +765,7 @@
       },
       "post": {
         "tags": [
-          "Biblioteca_controllers"
+          "Biblioteca"
         ],
         "requestBody": {
           "content": {
@@ -743,10 +810,10 @@
         }
       }
     },
-    "/api/Biblioteca_controllers/detalleprestamos/{id}": {
+    "/api/Biblioteca/detalleprestamos/{id}": {
       "get": {
         "tags": [
-          "Biblioteca_controllers"
+          "Biblioteca"
         ],
         "parameters": [
           {
@@ -784,7 +851,7 @@
       },
       "put": {
         "tags": [
-          "Biblioteca_controllers"
+          "Biblioteca"
         ],
         "parameters": [
           {
@@ -841,7 +908,7 @@
       },
       "delete": {
         "tags": [
-          "Biblioteca_controllers"
+          "Biblioteca"
         ],
         "parameters": [
           {
@@ -878,10 +945,10 @@
         }
       }
     },
-    "/api/Contabilidad_controllers/comprobante": {
+    "/api/Contabilidad/comprobante": {
       "get": {
         "tags": [
-          "Contabilidad_controllers"
+          "Contabilidad"
         ],
         "responses": {
           "200": {
@@ -917,7 +984,7 @@
       },
       "post": {
         "tags": [
-          "Contabilidad_controllers"
+          "Contabilidad"
         ],
         "requestBody": {
           "content": {
@@ -962,10 +1029,10 @@
         }
       }
     },
-    "/api/Contabilidad_controllers/comprobante/{id}": {
+    "/api/Contabilidad/comprobante/{id}": {
       "get": {
         "tags": [
-          "Contabilidad_controllers"
+          "Contabilidad"
         ],
         "parameters": [
           {
@@ -986,7 +1053,7 @@
       },
       "put": {
         "tags": [
-          "Contabilidad_controllers"
+          "Contabilidad"
         ],
         "parameters": [
           {
@@ -1026,7 +1093,7 @@
       },
       "delete": {
         "tags": [
-          "Contabilidad_controllers"
+          "Contabilidad"
         ],
         "parameters": [
           {
@@ -1063,10 +1130,10 @@
         }
       }
     },
-    "/api/Contabilidad_controllers/comprobante/buscar": {
+    "/api/Contabilidad/comprobante/buscar": {
       "get": {
         "tags": [
-          "Contabilidad_controllers"
+          "Contabilidad"
         ],
         "parameters": [
           {
@@ -1092,10 +1159,10 @@
         }
       }
     },
-    "/api/Contabilidad_controllers/detalle_comprobante": {
+    "/api/Contabilidad/detalle_comprobante": {
       "get": {
         "tags": [
-          "Contabilidad_controllers"
+          "Contabilidad"
         ],
         "responses": {
           "200": {
@@ -1131,7 +1198,7 @@
       },
       "post": {
         "tags": [
-          "Contabilidad_controllers"
+          "Contabilidad"
         ],
         "requestBody": {
           "content": {
@@ -1176,10 +1243,10 @@
         }
       }
     },
-    "/api/Contabilidad_controllers/detalle_comprobante/obtener/{id}": {
+    "/api/Contabilidad/detalle_comprobante/obtener/{id}": {
       "get": {
         "tags": [
-          "Contabilidad_controllers"
+          "Contabilidad"
         ],
         "parameters": [
           {
@@ -1199,10 +1266,10 @@
         }
       }
     },
-    "/api/Contabilidad_controllers/detalle_comprobante/{id}": {
+    "/api/Contabilidad/detalle_comprobante/{id}": {
       "get": {
         "tags": [
-          "Contabilidad_controllers"
+          "Contabilidad"
         ],
         "parameters": [
           {
@@ -1249,7 +1316,7 @@
       },
       "put": {
         "tags": [
-          "Contabilidad_controllers"
+          "Contabilidad"
         ],
         "parameters": [
           {
@@ -1289,7 +1356,7 @@
       },
       "delete": {
         "tags": [
-          "Contabilidad_controllers"
+          "Contabilidad"
         ],
         "parameters": [
           {
@@ -1326,10 +1393,10 @@
         }
       }
     },
-    "/api/Contabilidad_controllers/detalle_comprobante/buscar": {
+    "/api/Contabilidad/detalle_comprobante/buscar": {
       "get": {
         "tags": [
-          "Contabilidad_controllers"
+          "Contabilidad"
         ],
         "parameters": [
           {
@@ -1363,10 +1430,10 @@
         }
       }
     },
-    "/api/Contabilidad_controllers/detalle_comprobante/eliminar/{id}": {
+    "/api/Contabilidad/detalle_comprobante/eliminar/{id}": {
       "delete": {
         "tags": [
-          "Contabilidad_controllers"
+          "Contabilidad"
         ],
         "parameters": [
           {
@@ -1403,10 +1470,10 @@
         }
       }
     },
-    "/api/Contabilidad_controllers/cuenta": {
+    "/api/Contabilidad/cuenta": {
       "get": {
         "tags": [
-          "Contabilidad_controllers"
+          "Contabilidad"
         ],
         "responses": {
           "200": {
@@ -1442,7 +1509,7 @@
       },
       "post": {
         "tags": [
-          "Contabilidad_controllers"
+          "Contabilidad"
         ],
         "requestBody": {
           "content": {
@@ -1487,10 +1554,10 @@
         }
       }
     },
-    "/api/Contabilidad_controllers/cuenta/{id}": {
+    "/api/Contabilidad/cuenta/{id}": {
       "get": {
         "tags": [
-          "Contabilidad_controllers"
+          "Contabilidad"
         ],
         "parameters": [
           {
@@ -1528,7 +1595,7 @@
       },
       "put": {
         "tags": [
-          "Contabilidad_controllers"
+          "Contabilidad"
         ],
         "parameters": [
           {
@@ -1568,7 +1635,7 @@
       },
       "delete": {
         "tags": [
-          "Contabilidad_controllers"
+          "Contabilidad"
         ],
         "parameters": [
           {
@@ -1605,10 +1672,10 @@
         }
       }
     },
-    "/api/Contabilidad_controllers/cuenta/buscar": {
+    "/api/Contabilidad/cuenta/buscar": {
       "get": {
         "tags": [
-          "Contabilidad_controllers"
+          "Contabilidad"
         ],
         "parameters": [
           {
@@ -1641,10 +1708,10 @@
         }
       }
     },
-    "/api/Contabilidad_controllers/tipodecuenta": {
+    "/api/Contabilidad/tipodecuenta": {
       "get": {
         "tags": [
-          "Contabilidad_controllers"
+          "Contabilidad"
         ],
         "responses": {
           "200": {
@@ -1680,7 +1747,7 @@
       },
       "post": {
         "tags": [
-          "Contabilidad_controllers"
+          "Contabilidad"
         ],
         "requestBody": {
           "content": {
@@ -1725,10 +1792,10 @@
         }
       }
     },
-    "/api/Contabilidad_controllers/tipodecuenta/{id}": {
+    "/api/Contabilidad/tipodecuenta/{id}": {
       "get": {
         "tags": [
-          "Contabilidad_controllers"
+          "Contabilidad"
         ],
         "parameters": [
           {
@@ -1749,7 +1816,7 @@
       },
       "put": {
         "tags": [
-          "Contabilidad_controllers"
+          "Contabilidad"
         ],
         "parameters": [
           {
@@ -1789,7 +1856,7 @@
       },
       "delete": {
         "tags": [
-          "Contabilidad_controllers"
+          "Contabilidad"
         ],
         "parameters": [
           {
@@ -1826,10 +1893,10 @@
         }
       }
     },
-    "/api/Contabilidad_controllers/tipodecuenta/buscar": {
+    "/api/Contabilidad/tipodecuenta/buscar": {
       "get": {
         "tags": [
-          "Contabilidad_controllers"
+          "Contabilidad"
         ],
         "parameters": [
           {
@@ -1855,10 +1922,10 @@
         }
       }
     },
-    "/api/Contabilidad_controllers/balance": {
+    "/api/Contabilidad/balance": {
       "get": {
         "tags": [
-          "Contabilidad_controllers"
+          "Contabilidad"
         ],
         "responses": {
           "200": {
@@ -1884,10 +1951,10 @@
         }
       }
     },
-    "/api/Contabilidad_controllers/resultados": {
+    "/api/Contabilidad/resultados": {
       "get": {
         "tags": [
-          "Contabilidad_controllers"
+          "Contabilidad"
         ],
         "responses": {
           "200": {
@@ -2105,7 +2172,8 @@
             "format": "int32"
           },
           "isbn": {
-            "type": "string",
+            "type": "integer",
+            "format": "int32",
             "nullable": true
           },
           "titulo": {
