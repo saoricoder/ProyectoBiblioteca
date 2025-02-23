@@ -1,7 +1,7 @@
-
 import { Link } from "react-router-dom";
 import { MenuHeader } from "../../moduls/Menu_header";
 import "../../css/biblioteca/indexBiblio.css";
+import HelpChat from "../../moduls/chatHub";
 
 export function IndexBiblio() {
   return (
@@ -20,13 +20,16 @@ export function IndexBiblio() {
             <Link to="/biblioteca/prestamo">Prestámos </Link>
           </li>
           <li className="cont_item">
-            <Link to="/biblioteca/reporte-libros-por-dia">Reporte de libros por Día</Link>
+            <Link to="/biblioteca/reporte-libros-por-dia">
+              Reporte de libros por Día
+            </Link>
           </li>
           <li className="cont_item">
             <Link to="/biblioteca/reporte-cruzado">Reporte Cruzado </Link>
           </li>
         </ul>
       </div>
+      <HelpChat />
     </div>
   );
 }

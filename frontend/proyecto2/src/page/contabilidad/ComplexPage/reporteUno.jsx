@@ -1,5 +1,6 @@
 import { MenuHeader } from "../../../moduls/Menu_header";
 import { useEffect, useState } from "react";
+import HelpChat from "../../../moduls/chatHub";
 
 export function ReporteUno() {
   const [balance, setBalance] = useState({
@@ -127,6 +128,7 @@ export function ReporteUno() {
           )}
         </div>
       </div>
+      <HelpChat />
     </div>
   );
 }

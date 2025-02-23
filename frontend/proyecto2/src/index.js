@@ -22,8 +22,13 @@ import PrestamoPage from "./page/biblioteca/ComplexPage/PrestamoPage";
 import ReporteLibrosPorDia from "./page/biblioteca/ComplexPage/ReporteLibrosPorDia";
 import ReporteCruzado from "./page/biblioteca/ComplexPage/ReporteCruzado";
 
-// Módulo Selección
+//Modulo de Selección
 import { IndexSelec } from "./page/seleccion/indexSelec";
+import { SimpleUnos } from "./page/seleccion/SimplePage/simpleUnoS";
+import { SimpleDoss } from "./page/seleccion/SimplePage/SimpleDosS";
+import { ComplexUnos } from "./page/seleccion/ComplexPage/complejaUnoS";
+import { ReporteUnos } from "./page/seleccion/ComplexPage/reporteUnoS";
+import { ReporteDoss } from "./page/seleccion/ComplexPage/reporteDosS";
 
 // Módulo Nómina
 import { IndexNom } from "./page/nomina/indexNom";
@@ -56,14 +61,41 @@ const router = createBrowserRouter([
     path: "/nomina",
     element: <IndexNom />,
   },
+  // Rutas para el módulo de Selección
   {
     path: "/seleccion",
     element: <IndexSelec />,
   },
   {
+    path: "/solicitud",
+    element: <SimpleUnos />,
+  },
+
+  {
+    path: "/entrevista",
+    element: <SimpleDoss />,
+  },
+
+  {
+    path: "/evaluacion",
+    element: <ComplexUnos />,
+  },
+
+  {
+    path: "/ranking",
+    element: <ReporteUnos />,
+  },
+
+  {
+    path: "/cruzada",
+    element: <ReporteDoss />,
+  },
+  {
     path: "/signup",
     element: <Formulario />,
   },
+
+  // Rutas para el módulo de Contabilidad
   {
     path: "/tipocuenta",
     element: <SimpleUno />, // Página para el tipo de cuenta en Contabilidad

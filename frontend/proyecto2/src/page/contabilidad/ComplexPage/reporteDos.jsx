@@ -1,6 +1,7 @@
 import { MenuHeader } from "../../../moduls/Menu_header";
 import React, { useEffect, useState } from "react";
 import "../../../css/contabilidad/resultados.css";
+import HelpChat from "../../../moduls/chatHub";
 
 export function ReporteDos() {
   const [resultados, setResultados] = useState({
@@ -141,6 +142,7 @@ export function ReporteDos() {
           </tbody>
         </table>
       </div>
+      <HelpChat />
     </div>
   );
 }

@@ -14,6 +14,7 @@ import {
   EliminarBase,
   ModificarBase,
 } from "../../../services/general/crud.service";
+import HelpChat from "../../../moduls/chatHub";
 import "../../../css/contabilidad/comprobante.css";
 
 export function ComplexUno() {
@@ -855,6 +856,7 @@ export function ComplexUno() {
           </div>
         </div>
       </div>
+      <HelpChat />
     </div>
   );
 }

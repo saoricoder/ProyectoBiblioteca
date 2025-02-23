@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { MenuHeader } from "../../moduls/Menu_header";
+import HelpChat from "../../moduls/chatHub";
 
 export function IndexCont() {
   return (
@@ -25,6 +26,7 @@ export function IndexCont() {
           </li>
         </ul>
       </div>
+      <HelpChat />
     </div>
   );
 }

@@ -6,6 +6,7 @@ import {
   EliminarBase,
   ModificarBase,
 } from "../../../services/general/crud.service";
+import HelpChat from "../../../moduls/chatHub";
 
 export function LibroPage() {
   const API_URL =
@@ -424,6 +425,7 @@ export function LibroPage() {
           resultados && <p>{resultados}</p>
         )}
       </div>
+      <HelpChat />
     </div>
   );
 }

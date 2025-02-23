@@ -6,6 +6,7 @@ import {
   ObtenerDatosPorId,
   BuscarPorParam,
 } from "../../../services/general/useFetch";
+import HelpChat from "../../../moduls/chatHub";
 
 export function AutorPage() {
   const API_URL =
@@ -482,6 +483,7 @@ export function AutorPage() {
           resultados && <p>{resultados}</p>
         )}
       </div>
+      <HelpChat />
     </div>
   );
 }

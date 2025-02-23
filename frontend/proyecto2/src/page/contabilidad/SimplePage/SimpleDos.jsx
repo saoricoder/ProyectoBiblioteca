@@ -6,6 +6,7 @@ import {
   BuscarBase,
   ModificarBase,
 } from "../../../services/general/crud.service";
+import HelpChat from "../../../moduls/chatHub";
 
 export function SimpleDos() {
   const [codigo, setCodigo] = useState(0); //Codigo de la cuenta
@@ -428,6 +429,7 @@ export function SimpleDos() {
           resultados && <p>{resultados}</p>
         )}
       </div>
+      <HelpChat />
     </div>
   );
 }

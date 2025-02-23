@@ -6,6 +6,7 @@ import {
   ObtenerDatosPorId,
   BuscarPorParam,
 } from "../../../services/general/useFetch";
+import HelpChat from "../../../moduls/chatHub";
 
 export function SimpleUno() {
   const API_URL =
@@ -413,6 +414,7 @@ export function SimpleUno() {
           resultados && <p>{resultados}</p>
         )}
       </div>
+      <HelpChat />
     </div>
   );
 }
