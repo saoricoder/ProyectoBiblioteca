@@ -1,5 +1,63 @@
 [
   {
+    "ContainingType": "WebApi3.Controllers.User_controllers.Auth_controllers",
+    "Method": "Login",
+    "RelativePath": "api/Auth_controllers/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "login",
+        "Type": "WebApi3.Models.User_models.UserLogin_models",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi3.Controllers.User_controllers.Auth_controllers",
+    "Method": "Logout",
+    "RelativePath": "api/Auth_controllers/logout",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi3.Controllers.User_controllers.Auth_controllers",
+    "Method": "RefreshToken",
+    "RelativePath": "api/Auth_controllers/refreshToken",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "WebApi3.Data.Token_data.TokenRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi3.Controllers.User_controllers.Auth_controllers",
+    "Method": "RegistrarUsuario",
+    "RelativePath": "api/Auth_controllers/registro",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nuevoUsuario",
+        "Type": "WebApi3.Models.User_models.UserRegister_models",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "WebApi3.Controllers.Biblioteca",
     "Method": "GetAutores",
     "RelativePath": "api/Biblioteca/autores",
