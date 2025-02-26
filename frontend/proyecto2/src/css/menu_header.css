@@ -53,3 +53,7 @@
 a {
   text-decoration: none;
 }
+.logout_button {
+  background: inherit;
+  border: none;
+}

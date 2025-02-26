@@ -1,4 +1,6 @@
 ﻿using System.Data;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using WebApi3.Models.User_models;
 
@@ -7,7 +9,7 @@ namespace WebApi3.Data.User_data
     public class Usuarios_data
     {
         private static readonly string baseDatos = "DBWEBAPI";
-       
+
         public static bool RegisterUsuario (UserRegister_models usuarios)
         {
 

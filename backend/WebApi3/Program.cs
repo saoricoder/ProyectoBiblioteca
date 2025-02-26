@@ -14,7 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Agrega TokenData y TokenService al contenedor
 builder.Services.AddSingleton<TokenData_data>();
 builder.Services.AddSingleton<TokenService_data>();
-// Configuración de autenticación JWT
+// Configuración de autenticación JWT para leer desde la cookie
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -22,6 +22,30 @@ builder.Services.AddAuthentication(options =>
 })
 .AddJwtBearer(options =>
 {
+    options.Events = new JwtBearerEvents
+    {
+        // Este evento se dispara cuando el servidor recibe una solicitud
+        // y no hay un token en el encabezado Authorization.
+        OnMessageReceived = context =>
+        {
+            // Verifica si hay un token en las cookies
+            var token = context.Request.Cookies["AccessToken"];
+
+            // Si existe el token en la cookie, lo agregamos al encabezado Authorization
+            if (!string.IsNullOrEmpty(token))
+            {
+                context.Token = token;
+            }
+
+            return Task.CompletedTask;
+        },
+        OnAuthenticationFailed = context =>
+        {
+            Console.WriteLine("Autenticación fallida: " + context.Exception.Message);
+            return Task.CompletedTask;
+        }
+    };
+
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = true,

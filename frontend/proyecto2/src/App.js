@@ -1,16 +1,20 @@
-import { Formulario } from "./page/Formulario";
+import { Formulario } from "./page/Login";
 import "./App.css";
 import { MenuHeader } from "./moduls/Menu_header";
 
 function App() {
+  const menuItems = [
+    { link: "/login", title: "Inicio" },
+    { link: "/registro", title: "Registro" },
+    /* {
+      isButton: true,
+      title: "Cerrar sesión",
+      action: handleLogout,  // Enviamos el método para cerrar sesión
+    }, */
+  ];
   return (
     <div className="container">
-      <MenuHeader
-        title1={"Home"}
-        link1={"/"}
-        title2="Registro"
-        link2="/signup"
-      ></MenuHeader>
+      <MenuHeader menuItems={menuItems} />
       <Formulario />
     </div>
   );

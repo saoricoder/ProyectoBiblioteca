@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Text.RegularExpressions;
 using WebApi3.Data.Token_data;
 using WebApi3.Data.User_data;
@@ -13,6 +14,36 @@ namespace WebApi3.Controllers.User_controllers
         private readonly ILogger<Auth_controllers> _logger = logger;
         private readonly TokenService_data _tokenService = tokenService;
         private readonly Usuarios_data _usuariosData = new();
+
+        // Requiere que el usuario esté autenticado
+        [Authorize]
+        [HttpGet("verificarSesion")]
+        public IActionResult VerificarSesion()
+        {
+            var token = HttpContext.Request.Headers.Authorization.ToString();
+            Console.WriteLine("Token recibido: " + token);
+            try
+            {
+                Console.WriteLine("Verificando sesión...");
+
+                // Imprimir todas las cookies que recibe en la solicitud
+                foreach (var cookie in Request.Cookies)
+                {
+                    Console.WriteLine($"Cookie Name: {cookie.Key}, Cookie Value: {cookie.Value}");
+                }
+
+                // Aquí podrías validar más cosas como el token o sesión activa
+                // Si llegamos hasta aquí, significa que el usuario está autenticado correctamente
+                return Ok(new { mensaje = "Sesión activa" });
+            }
+            catch (Exception ex)
+            {
+                // En caso de un error, devolver una respuesta de error
+                Console.Error.WriteLine($"Error al verificar sesión: {ex.Message}");
+                return StatusCode(500, new { mensaje = "Error al verificar sesión" });
+            }
+        }
+
 
         //Login de usuario
         [HttpPost("login")]
@@ -70,7 +101,7 @@ namespace WebApi3.Controllers.User_controllers
                 // 8. Verificar si existe un Refresh Token activo
                 if (_tokenService.RefreshTokenActivo(user.Id))
                 {
-                    return Unauthorized("Sesión ya iniciada en otro dispositivo.");
+                    return Unauthorized(new { mensaje = "Sesión ya iniciada en otro dispositivo." });
                 }
 
                 // 9. Guardar el Refresh Token en la base de datos
@@ -81,7 +112,7 @@ namespace WebApi3.Controllers.User_controllers
                 {
                     HttpOnly = true,             // No accesible por JavaScript
                     Secure = true,               // Solo en HTTPS
-                    SameSite = SameSiteMode.Lax, // Protección contra CSRF
+                    SameSite = SameSiteMode.None,  // Permitir que se envíe en solicitudes entre dominios
                     Expires = DateTime.UtcNow.AddMinutes(30) // Expiración del AccessToken
                 };
                 Response.Cookies.Append("AccessToken", accessToken, cookieOptions);
@@ -91,7 +122,8 @@ namespace WebApi3.Controllers.User_controllers
                 Response.Cookies.Append("RefreshToken", refreshToken, cookieOptions);
 
                 // 12. Devolver respuesta exitosa sin exponer los tokens en el body
-                return Ok(new { mensaje = "Inicio de sesión exitoso" });
+                return Ok(new { mensaje = "Inicio de sesión exitoso", role = user.Role});
+
             }
             catch (Exception ex)
             {
@@ -144,7 +176,8 @@ namespace WebApi3.Controllers.User_controllers
                 Id = Guid.NewGuid().ToString(),
                 UserName = nuevoUsuario.UserName,
                 Password = passwordEncriptado,
-                Role = nuevoUsuario.Role
+                Role = nuevoUsuario.Role,
+                IsActive = true
             };
 
             Console.WriteLine($"Password: {usuarioAGuardar.Password}");
@@ -173,16 +206,21 @@ namespace WebApi3.Controllers.User_controllers
 
         //Renovar Token
         [HttpPost("refreshToken")]
-        public IActionResult RefreshToken([FromBody] TokenRequest request)
+        public IActionResult RefreshToken()
         {
             // 1. Validar formato del Access Token antes de procesarlo
-            if (string.IsNullOrEmpty(request.AccessToken) || string.IsNullOrEmpty(request.RefreshToken))
+            // Obtener los tokens desde las cookies
+            var accessToken = Request.Cookies["AccessToken"];
+            var refreshToken = Request.Cookies["RefreshToken"];
+
+            // Verificar si los tokens existen
+            if (string.IsNullOrEmpty(accessToken) || string.IsNullOrEmpty(refreshToken))
             {
                 return BadRequest("Tokens no proporcionados.");
             }
 
             // 2. Obtener datos del Access Token (sin verificar firma)
-            var payloadData = TokenService_data.PayloadData(request.AccessToken);
+            var payloadData = TokenService_data.PayloadData(accessToken);
             var userId = payloadData.UserId;
             var role = payloadData.Role;
 
@@ -193,7 +231,7 @@ namespace WebApi3.Controllers.User_controllers
 
             // 3. Validar el Refresh Token contra la base de datos
             TokenData_data tokenData = new();
-            if (!tokenData.ValidarRefreshToken(request.RefreshToken, userId))
+            if (!tokenData.ValidarRefreshToken(refreshToken, userId))
             {
                 return Unauthorized("Refresh Token inválido.");
             }
@@ -203,14 +241,14 @@ namespace WebApi3.Controllers.User_controllers
             var nuevoRefreshToken = _tokenService.GenerarRefreshToken();
 
             // 5. Actualizar el Refresh Token en la base de datos (Invalidar el anterior)
-            if (tokenData.ActualizarRefreshToken(request.RefreshToken, nuevoRefreshToken))
+            if (tokenData.ActualizarRefreshToken(refreshToken, nuevoRefreshToken))
             {
                 // Configurar cookies
                 var cookieOptions = new CookieOptions
                 {
                     HttpOnly = true,      // No accesible por JavaScript
                     Secure = true,        // Solo en HTTPS
-                    SameSite = SameSiteMode.Strict, // Protección contra CSRF
+                    SameSite = SameSiteMode.None,  // Permitir que se envíe en solicitudes entre dominios
                     Expires = DateTime.UtcNow.AddMinutes(2) // Expiración
                 };
 
@@ -229,7 +267,6 @@ namespace WebApi3.Controllers.User_controllers
             }
         }
 
-        //Cierre de Sesion
         [HttpPost("logout")]
         public IActionResult Logout()
         {
@@ -240,7 +277,7 @@ namespace WebApi3.Controllers.User_controllers
 
                 if (string.IsNullOrEmpty(refreshToken))
                 {
-                    return BadRequest("No se encontró un Refresh Token.");
+                    return BadRequest(new { mensaje = "No se encontró un Refresh Token." });
                 }
 
                 // 2. Revocar el Refresh Token en la base de datos
@@ -248,20 +285,29 @@ namespace WebApi3.Controllers.User_controllers
 
                 if (!revoked)
                 {
-                    return Unauthorized("El token ya estaba revocado o no es válido.");
+                    return Unauthorized(new { mensaje = "El token ya estaba revocado o no es válido." });
                 }
 
                 // 3. Eliminar cookies de sesión
-                Response.Cookies.Delete("AccessToken");
-                Response.Cookies.Delete("RefreshToken");
+                var expiredCookieOptions = new CookieOptions
+                {
+                    HttpOnly = true,
+                    Secure = true,
+                    SameSite = SameSiteMode.None,
+                    Expires = DateTime.UtcNow.AddDays(-1) // Fecha de expiración en el pasado
+                };
+
+                Response.Cookies.Append("AccessToken", "", expiredCookieOptions);
+                Response.Cookies.Append("RefreshToken", "", expiredCookieOptions);
 
                 return Ok(new { mensaje = "Sesión cerrada exitosamente." });
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error en el cierre de sesión.");
-                return StatusCode(500, "Ocurrió un error al cerrar sesión.");
+                return StatusCode(500, new { mensaje = "Ocurrió un error al cerrar sesión." });
             }
         }
+
     }
 }

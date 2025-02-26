@@ -5,6 +5,18 @@
     "version": "1.0"
   },
   "paths": {
+    "/api/Auth_controllers/verificarSesion": {
+      "get": {
+        "tags": [
+          "Auth_controllers"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Auth_controllers/login": {
       "post": {
         "tags": [
@@ -72,25 +84,6 @@
         "tags": [
           "Auth_controllers"
         ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/TokenRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/TokenRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/TokenRequest"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "OK"
@@ -2328,20 +2321,6 @@
             "format": "int32"
           },
           "nombre": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "TokenRequest": {
-        "type": "object",
-        "properties": {
-          "accessToken": {
-            "type": "string",
-            "nullable": true
-          },
-          "refreshToken": {
             "type": "string",
             "nullable": true
           }

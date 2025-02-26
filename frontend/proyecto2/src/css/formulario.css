@@ -17,7 +17,9 @@
 }
 .login_info {
   margin: 0 0 0 1em;
+  width: 100%;
   padding: 10px;
+  padding-right: 40px; /* Espacio para el botón */
   border: 1px solid #ccc;
   border-radius: 5px;
 }
@@ -29,4 +31,18 @@
   border-radius: 5px;
   color: #282c34;
   font-size: 400;
+}
+.password_container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.toggle_password {
+  position: absolute;
+  right: 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
 }

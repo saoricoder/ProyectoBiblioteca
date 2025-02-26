@@ -4,6 +4,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 
+//Modulos Generales
+import { Menu } from "./page/Menu";
+import AdminChat from "./moduls/AdminChat";
+import { RegisterForm } from "./page/Register";
+
 // Módulo Contabilidad
 import { IndexCont } from "./page/contabilidad/indexCont";
 import { SimpleUno } from "./page/contabilidad/SimplePage/simpleUno";
@@ -11,8 +16,6 @@ import { SimpleDos } from "./page/contabilidad/SimplePage/SimpleDos";
 import { ComplexUno } from "./page/contabilidad/ComplexPage/complejaUno";
 import { ReporteUno } from "./page/contabilidad/ComplexPage/reporteUno";
 import { ReporteDos } from "./page/contabilidad/ComplexPage/reporteDos";
-import { Menu } from "./page/Menu";
-import AdminChat from "./moduls/AdminChat";
 
 // Módulo Biblioteca
 import { IndexBiblio } from "./page/biblioteca/indexBiblio";
@@ -32,133 +35,212 @@ import { ReporteDoss } from "./page/seleccion/ComplexPage/reporteDosS";
 
 // Módulo Nómina
 import { IndexNom } from "./page/nomina/indexNom";
-
-// Módulo Formulario
-import { Formulario } from "./page/Formulario";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 // Configuración de las rutas de la aplicación
 const router = createBrowserRouter([
   // Ruta principal que carga el componente App
   {
     path: "/",
+    element: (
+      <ProtectedRoute>
+        <Menu />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/login",
     element: <App />,
+  },
+  {
+    path: "/registro",
+    element: <RegisterForm />,
+  },
+
+  // Rutas Protegidas para el módulo Principal
+  {
+    path: "/admin",
+    element: (
+      <ProtectedRoute>
+        <AdminChat />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/home",
+    element: (
+      <ProtectedRoute>
+        <Menu />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/nomina",
+    element: (
+      <ProtectedRoute>
+        <IndexNom />
+      </ProtectedRoute>
+    ),
+  },
+
+  // Rutas Protegidas para el módulo de Selección
+  {
+    path: "/seleccion",
+    element: (
+      <ProtectedRoute>
+        <IndexSelec />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/solicitud",
+    element: (
+      <ProtectedRoute>
+        <SimpleUnos />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/entrevista",
+    element: (
+      <ProtectedRoute>
+        <SimpleDoss />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/evaluacion",
+    element: (
+      <ProtectedRoute>
+        <ComplexUnos />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/ranking",
+    element: (
+      <ProtectedRoute>
+        <ReporteUnos />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/cruzada",
+    element: (
+      <ProtectedRoute>
+        <ReporteDoss />
+      </ProtectedRoute>
+    ),
   },
 
   // Rutas para el módulo de Contabilidad
   {
     path: "/contabilidad",
-    element: <IndexCont />,
+    element: (
+      <ProtectedRoute>
+        <IndexCont />
+      </ProtectedRoute>
+    ),
   },
-  {
-    path: "/admin",
-    element: <AdminChat />,
-  },
-  {
-    path: "/home",
-    element: <Menu />,
-  },
-  {
-    path: "/nomina",
-    element: <IndexNom />,
-  },
-  // Rutas para el módulo de Selección
-  {
-    path: "/seleccion",
-    element: <IndexSelec />,
-  },
-  {
-    path: "/solicitud",
-    element: <SimpleUnos />,
-  },
-
-  {
-    path: "/entrevista",
-    element: <SimpleDoss />,
-  },
-
-  {
-    path: "/evaluacion",
-    element: <ComplexUnos />,
-  },
-
-  {
-    path: "/ranking",
-    element: <ReporteUnos />,
-  },
-
-  {
-    path: "/cruzada",
-    element: <ReporteDoss />,
-  },
-  {
-    path: "/signup",
-    element: <Formulario />,
-  },
-
-  // Rutas para el módulo de Contabilidad
   {
     path: "/tipocuenta",
-    element: <SimpleUno />, // Página para el tipo de cuenta en Contabilidad
+    element: (
+      <ProtectedRoute>
+        <SimpleUno />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/cuenta",
-    element: <SimpleDos />, // Página para la cuenta en Contabilidad
+    element: (
+      <ProtectedRoute>
+        <SimpleDos />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/comprobante",
-    element: <ComplexUno />, // Página para comprobantes en Contabilidad
+    element: (
+      <ProtectedRoute>
+        <ComplexUno />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/balance",
-    element: <ReporteUno />, // Página de reporte uno en Contabilidad
+    element: (
+      <ProtectedRoute>
+        <ReporteUno />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/resultado",
-    element: <ReporteDos />, // Página de reporte dos en Contabilidad
+    element: (
+      <ProtectedRoute>
+        <ReporteDos />
+      </ProtectedRoute>
+    ),
   },
 
-  // Rutas para el módulo de Biblioteca
+  // Rutas Protegidas para el módulo de Biblioteca
   {
     path: "/biblioteca",
-    element: <IndexBiblio />, // Página principal de Biblioteca
+    element: (
+      <ProtectedRoute>
+        <IndexBiblio />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/biblioteca/autor",
-    element: <AutorPage />, // Página Autor de Biblioteca
+    element: (
+      <ProtectedRoute>
+        <AutorPage />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/biblioteca/libro",
-    element: <LibroPage />, // Página Libro de Biblioteca
+    element: (
+      <ProtectedRoute>
+        <LibroPage />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/biblioteca/prestamo",
-    element: <PrestamoPage />, // Página Prestamo de Biblioteca
+    element: (
+      <ProtectedRoute>
+        <PrestamoPage />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/biblioteca/reporte-libros-por-dia",
-    element: <ReporteLibrosPorDia />, // Página Reporte 1 de Biblioteca
+    element: (
+      <ProtectedRoute>
+        <ReporteLibrosPorDia />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/biblioteca/reporte-cruzado",
-    element: <ReporteCruzado />, // Página reporte 2 de Biblioteca
+    element: (
+      <ProtectedRoute>
+        <ReporteCruzado />
+      </ProtectedRoute>
+    ),
   },
 
-  // Rutas para el módulo de Nómina
+  // Ruta Protegida para el módulo de Nómina
   {
     path: "/nomina",
-    element: <IndexNom />, // Página principal de Nómina
-  },
-
-  // Rutas para el módulo de Selección
-  {
-    path: "/seleccion",
-    element: <IndexSelec />, // Página principal de Selección
-  },
-
-  // Ruta para el formulario de registro
-  {
-    path: "/signup",
-    element: <Formulario />, // Página de formulario de registro
+    element: (
+      <ProtectedRoute>
+        <IndexNom />
+      </ProtectedRoute>
+    ),
   },
 ]);
 

@@ -1,0 +1,14 @@
+.password_container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.toggle_password {
+  position: absolute;
+  right: 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
