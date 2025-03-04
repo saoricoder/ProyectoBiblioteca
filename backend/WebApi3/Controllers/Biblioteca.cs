@@ -9,26 +9,66 @@ namespace WebApi3.Controllers
     [Route("/api/[controller]")]
     public class Biblioteca : ControllerBase
     {
-
         // GET: api/libros
         [HttpGet("libros")]
-        public List<Libros_models> GetLibros()
+        public IActionResult GetLibros()
         {
-            return Libros_data.ConsultarLibros();
+            try
+            {
+                var libros = Libros_data.ConsultarLibros();
+                if (libros == null || !libros.Any())
+                {
+                    return NoContent();
+                }
+                return Ok(libros);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Error al consultar libros", error = ex.Message });
+            }
         }
 
         // GET: api/libros/5
         [HttpGet("libros/{isbn}")]
-        public Libros_models? GetLibro(int isbn)
+        public IActionResult GetLibro(int isbn)
         {
-            return Libros_data.ConsultarLibro(isbn);
+            try
+            {
+                var libro = Libros_data.ConsultarLibro(isbn);
+                if (libro == null)
+                {
+                    return NotFound(new { message = $"No se encontró el libro con ISBN {isbn}" });
+                }
+                return Ok(libro);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Error al consultar el libro", error = ex.Message });
+            }
         }
 
         // POST: api/libros
         [HttpPost("libros")]
-        public bool PostLibro([FromBody] Libros_models libro)
+        public IActionResult PostLibro([FromBody] Libros_models libro)
         {
-            return Libros_data.InsertarLibro(libro);
+            try
+            {
+                if (libro == null)
+                {
+                    return BadRequest(new { message = "Datos del libro inválidos" });
+                }
+
+                bool resultado = Libros_data.InsertarLibro(libro);
+                if (resultado)
+                {
+                    return Ok(new { message = "Libro insertado correctamente" });
+                }
+                return StatusCode(500, new { message = "No se pudo insertar el libro" });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Error al insertar el libro", error = ex.Message });
+            }
         }
 
         // PUT: api/libros/5
@@ -135,9 +175,21 @@ namespace WebApi3.Controllers
 
         // GET: api/prestamos
         [HttpGet("prestamos")]
-        public List<Prestamos_models> GetPrestamos()
+        public IActionResult GetPrestamos()
         {
-            return Prestamos_data.ConsultarPrestamos();
+            try
+            {
+                var prestamos = Prestamos_data.ConsultarPrestamos();
+                if (prestamos == null || !prestamos.Any())
+                {
+                    return NoContent();
+                }
+                return Ok(prestamos);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Error al consultar préstamos", error = ex.Message });
+            }
         }
 
         // GET: api/prestamos/5
@@ -169,11 +221,26 @@ namespace WebApi3.Controllers
         }
 
         // GET: api/detalleprestamos
-        [HttpGet("detalleprestamos")]
-        public List<DetallePrestamos_models> GetDetallePrestamos()
-        {
-            return DetallePrestamos_data.ConsultarDetalles();
-        }
+        [HttpGet("detalleprestamos/buscar")]
+        public IActionResult GetBuscarDetallePrestamos([FromQuery] int? id = null)
+                {
+                    try
+                    {
+                        var resultados = DetallePrestamos_data.ConsultarDetalle(id ?? 0);
+
+                        if (resultados == null)
+                        {
+                            return NoContent();
+                        }
+
+                        return Ok(new List<DetallePrestamos_models> { resultados });
+                    }
+                    catch (Exception ex)
+                    {
+                        return StatusCode(500, new { message = "Error al buscar detalles del préstamo", error = ex.Message });
+                    }
+                }
+
 
         // GET: api/detalleprestamos/5
         [HttpGet("detalleprestamos/{id}")]

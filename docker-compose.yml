@@ -1,0 +1,86 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend/WebApi3
+      dockerfile: Dockerfile
+    ports:
+      - "7015:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__ContabilidadConnection=Server=db;Database=CONTABILIDAD;User=sa;Password=SqlServer2023!;TrustServerCertificate=True
+      - ConnectionStrings__BibliotecaConnection=Server=db;Database=BIBLIOTECA;User=sa;Password=SqlServer2023!;TrustServerCertificate=True
+      - Jwt__Key=ClaveSuperSecretaNoCompartirNoModificar
+      - Jwt__Issuer=AngelusInfernus&SaoriCoder
+      - Jwt__Audience=saoricoder_users
+      - Jwt__AccessTokenExpirationMinutes=30
+      - Jwt__RefreshTokenExpirationDays=7
+    healthcheck:
+      test: curl --fail http://localhost:80/health || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - app-network
+    depends_on:
+      db:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ./frontend/proyecto2
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    environment:
+      - REACT_APP_API_URL=http://localhost:7015/api/
+      - REACT_APP_SIGNALR_URL=http://localhost:7015/chatHub
+    depends_on:
+      - backend
+    networks:
+      - app-network
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=SqlServer2023!
+      - MSSQL_PID=Developer
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqldata:/var/opt/mssql
+      - ./frontend/proyecto2/sources/:/docker-entrypoint-initdb.d/
+    command: >
+      bash -c '
+      /opt/mssql/bin/sqlservr &
+      sleep 30 &&
+      /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P SqlServer2023! -i /docker-entrypoint-initdb.d/biblioteca.sql &&
+      /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P SqlServer2023! -i /docker-entrypoint-initdb.d/contabilidad.sql &&
+      /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P SqlServer2023! -i /docker-entrypoint-initdb.d/DBWwebApi.sql &&
+      tail -f /dev/null
+      '
+    healthcheck:
+      test: /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P "SqlServer2023!" -Q "SELECT 1" || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 60s
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+        reservations:
+          memory: 2G
+
+volumes:
+  sqldata:
+networks:
+  app-network:
+    driver: bridge

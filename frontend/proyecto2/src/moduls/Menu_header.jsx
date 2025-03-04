@@ -1,7 +1,10 @@
 import "../css/menu_header.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import PropTypes from 'prop-types';
 
-export function MenuHeader({ menuItems }) {
+export function MenuHeader({ menuItems = [] }) {
+  const navigate = useNavigate();
+
   return (
     <div className="item_header">
       <div className="item_container">
@@ -9,15 +12,13 @@ export function MenuHeader({ menuItems }) {
           PROYECTO PARCIAL 2 – APLICACIONES DISTRIBUIDAS
         </h1>
         <ul className="menu_item">
-          {menuItems.map((item, index) => (
+          {menuItems?.map((item, index) => (
             <li key={index} className="item_menu">
               {item.isButton ? (
-                // Si es un botón, usamos un botón HTML que ejecuta el método
                 <button className="logout_button" onClick={item.action}>
                   {item.title}
                 </button>
               ) : (
-                // Si es un enlace, usamos un <Link>
                 <Link to={item.link}>{item.title}</Link>
               )}
             </li>
@@ -27,3 +28,14 @@ export function MenuHeader({ menuItems }) {
     </div>
   );
 }
+
+MenuHeader.propTypes = {
+  menuItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      isButton: PropTypes.bool,
+      action: PropTypes.func,
+      link: PropTypes.string
+    })
+  )
+};

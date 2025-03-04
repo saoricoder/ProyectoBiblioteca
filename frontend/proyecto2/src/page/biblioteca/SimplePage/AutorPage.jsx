@@ -378,10 +378,10 @@ export function AutorPage() {
   return (
     <div className="container">
       <MenuHeader
-        title1="Atras"
-        link1="/biblioteca"
-        title2="Home"
-        link2="/home"
+        menuItems={[
+          { title: "Atrás", link: "/biblioteca" },
+          { title: "Home", link: "/home" }
+        ]}
       />
       <h1 className="title">Crear Autor de Libro</h1>
       <div className="form_container">

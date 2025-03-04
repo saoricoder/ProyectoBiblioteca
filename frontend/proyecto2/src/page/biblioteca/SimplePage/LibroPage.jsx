@@ -293,7 +293,12 @@ export function LibroPage() {
 
   return (
     <div className="container">
-      <MenuHeader title1="Atras" link1="/biblioteca" title2="Home" link2="/" />
+      <MenuHeader
+        menuItems={[
+          { title: "Atrás", link: "/biblioteca" },
+          { title: "Home", link: "/home" }
+        ]}
+      />
       <h1>Libros</h1>
       <div className="form_container">
         <form className="form_libros">

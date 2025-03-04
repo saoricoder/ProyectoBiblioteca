@@ -1,89 +1,121 @@
-import React, { useState } from "react";
-import { getLibros } from "../../../services/biblioteca.services/libro.service";
-import { getAutores } from "../../../services/biblioteca.services/autor.service";
+import React, { useState, useEffect } from "react";
 import { MenuHeader } from "../../../moduls/Menu_header";
-import "../../../css/biblioteca/ReporteCruzado.css"; // Importar estilos
-const ReporteCruzado = () => {
-  const [fechaInicio, setFechaInicio] = useState("");
-  const [fechaFin, setFechaFin] = useState("");
-  const [reporte, setReporte] = useState([]);
+import { BuscarPorParam } from "../../../services/general/useFetch";
+import HelpChat from "../../../moduls/chatHub";
+import "../../../css/biblioteca/ReporteCruzado.css";
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    getLibros().then((librosResponse) => {
-      getAutores().then((autoresResponse) => {
-        const libros = librosResponse.data;
-        const autores = autoresResponse.data;
+export function ReporteCruzado() {
+  const API_URL = process.env.REACT_APP_API_URL || "https://localhost:7015/api/";
+  const urlLibros = `${API_URL}Biblioteca/libros`;
+  const urlAutores = `${API_URL}Biblioteca/autores`;
 
-        // Crear un mapa para contar libros por autor y título
-        const reporteData = libros.map((libro) => {
-          const autor = autores.find((a) => a.Codigo === libro.AutorCodigo);
-          return {
-            Titulo: libro.Titulo,
-            Autor: autor ? `${autor.Nombre} ${autor.Apellido}` : "Desconocido",
-          };
+  const [reporteData, setReporteData] = useState({
+    libros: [],
+    autores: [],
+    reporteCruzado: {}
+  });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  // Obtener datos iniciales
+  const obtenerDatos = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const [librosResult, autoresResult] = await Promise.all([
+        BuscarPorParam(urlLibros, {}),
+        BuscarPorParam(urlAutores, {})
+      ]);
+
+      if (!librosResult.success || !autoresResult.success) {
+        throw new Error("Error al obtener datos");
+      }
+
+      // Crear matriz cruzada
+      const cruzado = {};
+      librosResult.data.forEach(libro => {
+        if (!cruzado[libro.titulo]) {
+          cruzado[libro.titulo] = {};
+        }
+        
+        autoresResult.data.forEach(autor => {
+          const autorNombre = `${autor.nombre} ${autor.apellido}`;
+          cruzado[libro.titulo][autorNombre] = libro.autorCodigo === autor.codigo ? 1 : 0;
         });
-
-        // Convertir a formato cruzado
-        const cruzado = {};
-        reporteData.forEach((item) => {
-          if (!cruzado[item.Titulo]) {
-            cruzado[item.Titulo] = {};
-          }
-          cruzado[item.Titulo][item.Autor] = (cruzado[item.Titulo][item.Autor] || 0) + 1;
-        });
-
-        setReporte(cruzado);
       });
-    });
+
+      setReporteData({
+        libros: librosResult.data,
+        autores: autoresResult.data,
+        reporteCruzado: cruzado
+      });
+    } catch (error) {
+      setError("Error al generar el reporte: " + error.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  // Función para imprimir el reporte
+  useEffect(() => {
+    obtenerDatos();
+  }, []);
+
   const handleImprimir = () => {
     window.print();
   };
 
   return (
-    <div>
-      <MenuHeader title1="Atras" link1="/biblioteca" title2="Home" link2="/home" />
-      <h1>Reporte Cruzado</h1>
-      <form onSubmit={handleSubmit}>
-        <input type="date" value={fechaInicio} onChange={(e) => setFechaInicio(e.target.value)} />
-        <input type="date" value={fechaFin} onChange={(e) => setFechaFin(e.target.value)} />
-        <button type="submit">Generar Reporte</button>
-      </form>
+    <div className="container">
+      <MenuHeader
+        menuItems={[
+          { title: "Atrás", link: "/biblioteca" },
+          { title: "Home", link: "/home" }
+        ]}
+      />
+      <div className="reporte_container">
+        <h2 className="title_reporte">Reporte Cruzado de Libros por Autor</h2>
 
-      {/* Tabla de resultados */}
-      {Object.keys(reporte).length > 0 && (
-        <div>
-          <h2>Reporte Cruzado</h2>
-          <table border="1" cellPadding="5" cellSpacing="0" style={{ width: "100%", marginTop: "10px" }}>
-            <thead>
-              <tr>
-                <th>Título del Libro</th>
-                {Object.keys(reporte[Object.keys(reporte)[0]]).map((autor, index) => (
-                  <th key={index}>{autor}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {Object.keys(reporte).map((titulo, index) => (
-                <tr key={index}>
-                  <td>{titulo}</td>
-                  {Object.keys(reporte[titulo]).map((autor, idx) => (
-                    <td key={idx}>{reporte[titulo][autor]}</td>
+        {error && <div className="error-message">{error}</div>}
+
+        {loading ? (
+          <p>Generando reporte...</p>
+        ) : Object.keys(reporteData.reporteCruzado).length > 0 ? (
+          <div className="reporte_content">
+            <table>
+              <thead>
+                <tr>
+                  <th>Títulos / Autores</th>
+                  {reporteData.autores.map(autor => (
+                    <th key={autor.codigo}>
+                      {`${autor.nombre} ${autor.apellido}`}
+                    </th>
                   ))}
                 </tr>
-              ))}
-            </tbody>
-          </table>
-          <button onClick={handleImprimir} style={{ marginTop: "10px" }}>
-            Imprimir Reporte
-          </button>
-        </div>
-      )}
+              </thead>
+              <tbody>
+                {Object.entries(reporteData.reporteCruzado).map(([titulo, autores], index) => (
+                  <tr key={index}>
+                    <td>{titulo}</td>
+                    {reporteData.autores.map(autor => (
+                      <td key={autor.codigo}>
+                        {autores[`${autor.nombre} ${autor.apellido}`] || 0}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <button onClick={handleImprimir} className="print-button">
+              Imprimir Reporte
+            </button>
+          </div>
+        ) : (
+          <p>No hay datos disponibles para el reporte</p>
+        )}
+      </div>
+      <HelpChat />
     </div>
   );
-};
+}
 
 export default ReporteCruzado;

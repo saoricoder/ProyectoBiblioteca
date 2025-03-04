@@ -7,9 +7,9 @@ namespace WebApi3.Data
         public static SqlConnection ObtenerConexion(string nombreBaseDatos)
         {
             // Aquí definimos los otros parámetros de la conexión
-            string servidor = "DESKTOP-OBRLD3V\\SQLEXPRESS";  // Cambiar según tu servidor
-            string usuario = "sa";                             // Nombre de usuario
-            string contrasena = "angel94";                     // Contraseña
+            string servidor = "PONIO-CRK2\\MSSQLSERVER01";  // Cambiar según tu servidor
+            string usuario = "saoricoder";                             // Nombre de usuario
+            string contrasena = "23889";                     // Contraseña
 
             // Construir la cadena de conexión con el nombre de la base de datos recibido como parámetro
             string rutaConexion = $"Data Source={servidor};Initial Catalog={nombreBaseDatos};Persist Security Info=True;User ID={usuario};Password={contrasena};Trust Server Certificate=True;";

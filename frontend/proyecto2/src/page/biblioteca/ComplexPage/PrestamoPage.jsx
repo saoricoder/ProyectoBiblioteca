@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
-/* import {
+import {
   getPrestamos,
   postPrestamo,
   updatePrestamo,
   deletePrestamo,
-} from "../../../services/biblioteca.services/prestamo.service"; */
-
-import { getLibros } from "../../../services/biblioteca.services/libro.service";
+} from "../../../services/biblioteca.services/prestamo.service";
+import { ObtenerDatos } from "../../../services/general/useFetch"; // Importar ObtenerDatos
 import { MenuHeader } from "../../../moduls/Menu_header";
 import "../../../css/biblioteca/PrestamoPage.css";
+import HelpChat from "../../../moduls/chatHub";
 
 const PrestamoPage = () => {
   const [prestamoData, setPrestamoData] = useState({
@@ -17,7 +17,7 @@ const PrestamoPage = () => {
     descripcion: "",
     detalles: [],
   });
-  const [libros, setLibros] = useState([]);
+  const [libros, setLibros] = useState([]); // Estado para almacenar los libros
   const [prestamos, setPrestamos] = useState([]);
   const [editando, setEditando] = useState(null);
 
@@ -47,9 +47,12 @@ const PrestamoPage = () => {
   const obtenerPrestamos = async () => {
     setEstado((prev) => ({ ...prev, loading: true }));
     try {
-      /* const data = await getPrestamos();
-      setPrestamos(data); */
-      console.log("Prestamos obtenidos");
+      const { success, data } = await getPrestamos();
+      if (success) {
+        setPrestamos(data);
+      } else {
+        setEstado((prev) => ({ ...prev, error: "Error al obtener préstamos" }));
+      }
     } catch (error) {
       setEstado((prev) => ({ ...prev, error: "Error al obtener préstamos" }));
     } finally {
@@ -59,26 +62,51 @@ const PrestamoPage = () => {
 
   // Función para obtener los libros disponibles
   const obtenerLibros = async () => {
+    setEstado((prev) => ({ ...prev, loading: true }));
     try {
-      /* const data = await getLibros();
-      setLibros(data); */
-      console.log("Libros obtenidos");
+      const urlLibros = "http://localhost:5286/api/Biblioteca/libros"; // URL de la API de libros
+      const { success, data } = await ObtenerDatos(urlLibros); // Usar ObtenerDatos
+      if (success) {
+        setLibros(data); // Actualizar el estado con los libros obtenidos
+      } else {
+        setEstado((prev) => ({ ...prev, error: "Error al obtener libros" }));
+      }
     } catch (error) {
       setEstado((prev) => ({ ...prev, error: "Error al obtener libros" }));
+    } finally {
+      setEstado((prev) => ({ ...prev, loading: false }));
     }
   };
+
   const editar = (codigo, numero, fecha, observaciones) => {
     setEditando(codigo);
     setPrestamoData({
       numero,
-      fecha,
-      observaciones,
+      fechaPrestamo: fecha,
+      descripcion: observaciones,
+      detalles: [],
     });
   };
 
-  const EliminarDatosBoton = () => {
-    console.log("Eliminar datos");
+  const EliminarDatosBoton = async (id) => {
+    if (window.confirm("¿Estás seguro de eliminar este préstamo?")) {
+      setEstado((prev) => ({ ...prev, loading: true }));
+      try {
+        const { success } = await deletePrestamo(id);
+        if (success) {
+          obtenerPrestamos();
+          limpiarFormulario();
+        } else {
+          setEstado((prev) => ({ ...prev, error: "Error al eliminar el préstamo" }));
+        }
+      } catch (error) {
+        setEstado((prev) => ({ ...prev, error: "Error al eliminar el préstamo" }));
+      } finally {
+        setEstado((prev) => ({ ...prev, loading: false }));
+      }
+    }
   };
+
   // Función para crear o actualizar un préstamo
   const manejarEnvio = async (e) => {
     e.preventDefault();
@@ -86,14 +114,24 @@ const PrestamoPage = () => {
 
     try {
       if (editando) {
-        //await updatePrestamo(editando, prestamoData);
-        console.log("Prestamo actualizado");
+        const { success } = await updatePrestamo(editando, prestamoData);
+        if (success) {
+          console.log("Préstamo actualizado");
+          obtenerPrestamos();
+          limpiarFormulario();
+        } else {
+          setEstado((prev) => ({ ...prev, error: "Error al actualizar el préstamo" }));
+        }
       } else {
-        //await postPrestamo(prestamoData);
-        console.log("Prestamo insertado");
+        const { success } = await postPrestamo(prestamoData);
+        if (success) {
+          console.log("Préstamo insertado");
+          obtenerPrestamos();
+          limpiarFormulario();
+        } else {
+          setEstado((prev) => ({ ...prev, error: "Error al insertar el préstamo" }));
+        }
       }
-      obtenerPrestamos();
-      limpiarFormulario();
     } catch (error) {
       setEstado((prev) => ({ ...prev, error: "Error al guardar el préstamo" }));
     } finally {
@@ -101,35 +139,17 @@ const PrestamoPage = () => {
     }
   };
 
-  // Función para eliminar un préstamo
-  const eliminarPrestamo = async (id) => {
-    if (window.confirm("¿Estás seguro de eliminar este préstamo?")) {
-      setEstado((prev) => ({ ...prev, loading: true }));
-      try {
-        /* await deletePrestamo(id);
-        obtenerPrestamos(); */
-        console.log("Prestamo eliminado");
-        limpiarFormulario();
-      } catch (error) {
-        setEstado((prev) => ({
-          ...prev,
-          error: "Error al eliminar el préstamo",
-        }));
-      } finally {
-        setEstado((prev) => ({ ...prev, loading: false }));
-      }
-    }
-  };
   // Función para limpiar el formulario después de enviar
   const limpiarFormulario = () => {
     setPrestamoData({
-      numero: "",
+      numero: GenerarNumero(),
       fechaPrestamo: "",
       descripcion: "",
       detalles: [],
     });
     setEditando(null);
   };
+
   const handleChangeDetalle = (e, index) => {
     const { name, value } = e.target;
     setPrestamoData((prev) => {
@@ -145,26 +165,36 @@ const PrestamoPage = () => {
   // Función para buscar préstamos
   const handleBuscar = async () => {
     setEstado((prev) => ({ ...prev, loading: true }));
-    console.log("Buscando prestamos");
-    setEstado((prev) => ({
-      ...prev,
-      loading: false,
-    }));
+    try {
+      const { success, data } = await getPrestamos();
+      if (success) {
+        setPrestamos(data);
+      } else {
+        setEstado((prev) => ({ ...prev, error: "Error al buscar préstamos" }));
+      }
+    } catch (error) {
+      setEstado((prev) => ({ ...prev, error: "Error al buscar préstamos" }));
+    } finally {
+      setEstado((prev) => ({ ...prev, loading: false }));
+    }
   };
+
   // Efectos para cargar datos iniciales
   useEffect(() => {
-    obtenerLibros();
+    obtenerLibros(); // Obtener los libros al cargar la página
     obtenerPrestamos();
-    setPrestamoData({ numero: GenerarNumero(), detalles: [] });
+    setPrestamoData((prev) => ({ ...prev, numero: GenerarNumero() }));
   }, []);
 
+  // Update the MenuHeader component near the return statement
   return (
     <div className="container">
       <MenuHeader
-        title1="Atras"
-        link1="/biblioteca"
-        title2="Home"
-        link2="/home"
+        menuItems={[
+          { title: "Atrás", link: "/biblioteca" },
+          { title: "Home", link: "/home" },
+          { title: "Reportes", link: "/biblioteca/reportes" }
+        ]}
       />
       <h1>Gestión de Préstamos</h1>
       <div className="container_prestamo">
@@ -204,52 +234,51 @@ const PrestamoPage = () => {
             </div>
             {/* Botones de acción */}
             <div>
-              <button type="button" onClick={manejarEnvio}>
-                Insertar
+              <button type="submit" disabled={estado.loading}>
+                {editando ? "Actualizar" : "Insertar"}
               </button>
-              <button type="button" onClick={eliminarPrestamo}>
+              <button type="button" onClick={() => EliminarDatosBoton(editando)} disabled={!editando}>
                 Eliminar
               </button>
-              <button type="button" onClick={handleBuscar}>
+              <button type="button" onClick={handleBuscar} disabled={estado.loading}>
                 Buscar
               </button>
               <button type="button" onClick={limpiarFormulario}>
-                Modificar
+                Limpiar
               </button>
             </div>
           </form>
           {/* Mostramos la tabla solo si hay datos */}
-          {Array.isArray(prestamoData.detalles) &&
-          prestamoData.detalles.length > 0 ? (
+          {Array.isArray(prestamos) && prestamos.length > 0 ? (
             <table>
               <thead>
                 <tr>
-                  <th>Numero</th>
+                  <th>Número</th>
                   <th>Fecha</th>
-                  <th>Observaciones</th>
-                  <th>Accion</th>
+                  <th>Descripción</th>
+                  <th>Acción</th>
                 </tr>
               </thead>
               <tbody>
-                {prestamoData.detalles.map((item, index) => (
+                {prestamos.map((item, index) => (
                   <tr key={index}>
                     <td>{item.numero}</td>
-                    <td>{new Date(item.fecha).toISOString().split("T")[0]}</td>
-                    <td>{item.observaciones}</td>
+                    <td>{new Date(item.fechaPrestamo).toISOString().split("T")[0]}</td>
+                    <td>{item.descripcion}</td>
                     <td>
                       {/* Botones para editar y eliminar */}
                       <button
                         onClick={() =>
                           editar(
                             item.numero,
-                            new Date(item.fecha).toISOString().split("T")[0],
-                            item.observaciones
+                            item.fechaPrestamo,
+                            item.descripcion
                           )
                         }
                       >
                         Editar
                       </button>
-                      <button onClick={() => EliminarDatosBoton()}>
+                      <button onClick={() => EliminarDatosBoton(item.numero)}>
                         Eliminar
                       </button>
                     </td>
@@ -259,7 +288,7 @@ const PrestamoPage = () => {
             </table>
           ) : (
             // Mostrar un mensaje si no hay datos
-            prestamoData.resultados && <p>{prestamoData.resultados}</p>
+            <p>No hay préstamos registrados</p>
           )}
         </div>
         {/* Detalles del préstamo */}
@@ -268,15 +297,15 @@ const PrestamoPage = () => {
           <form className="detalle_prestamo">
             <div className="form_input">
               <div className="form_item">
-                <label htmlFor="codigoLibro">Codigo Libro ISBN</label>
+                <label htmlFor="codigoLibro">Código Libro ISBN</label>
                 <select
                   name="codigoLibro"
                   value={prestamoData.codigoLibro}
-                  onChange={handleChangeDetalle}
+                  onChange={(e) => handleChangeDetalle(e, 0)}
                 >
                   <option value="">Seleccionar Libro</option>
                   {libros.map((libro) => (
-                    <option key={libro.codigo} value={libro.codigo}>
+                    <option key={libro.isbn} value={libro.isbn}>
                       {libro.titulo}
                     </option>
                   ))}
@@ -288,7 +317,7 @@ const PrestamoPage = () => {
                   type="number"
                   name="cantidad"
                   value={prestamoData.cantidad}
-                  onChange={handleChangeDetalle}
+                  onChange={(e) => handleChangeDetalle(e, 0)}
                 />
               </div>
               <div className="form_item">
@@ -297,24 +326,24 @@ const PrestamoPage = () => {
                   type="date"
                   name="fechaEntrega"
                   value={prestamoData.fechaEntrega}
-                  onChange={handleChangeDetalle}
+                  onChange={(e) => handleChangeDetalle(e, 0)}
                 />
               </div>
             </div>
           </form>
           {/* Botones de acción */}
           <div>
-            <button type="button" onClick={manejarEnvio}>
+            <button type="button" onClick={manejarEnvio} disabled={estado.loading}>
               Insertar
             </button>
-            <button type="button" onClick={eliminarPrestamo}>
+            <button type="button" onClick={() => EliminarDatosBoton(editando)} disabled={!editando}>
               Eliminar
             </button>
-            <button type="button" onClick={handleBuscar}>
+            <button type="button" onClick={handleBuscar} disabled={estado.loading}>
               Buscar
             </button>
             <button type="button" onClick={limpiarFormulario}>
-              Modificar
+              Limpiar
             </button>
           </div>
           {/* Resultados de la búsqueda */}
@@ -330,10 +359,10 @@ const PrestamoPage = () => {
               <table>
                 <thead>
                   <tr>
-                    <th>Codigo de Libro(ISBN)</th>
+                    <th>Código de Libro (ISBN)</th>
                     <th>Cantidad</th>
                     <th>Fecha de Entrega</th>
-                    <th>Accion</th>
+                    <th>Acción</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -356,7 +385,7 @@ const PrestamoPage = () => {
                         >
                           Editar
                         </button>
-                        <button onClick={() => EliminarDatosBoton()}>
+                        <button onClick={() => EliminarDatosBoton(item.codigo)}>
                           Eliminar Detalle
                         </button>
                       </td>
@@ -366,11 +395,12 @@ const PrestamoPage = () => {
               </table>
             ) : (
               // Mostrar un mensaje si no hay datos
-              prestamoData.resultados && <p>{prestamoData.resultados}</p>
+              <p>No hay detalles de préstamos registrados</p>
             )}
           </div>
         </div>
       </div>
+      <HelpChat />
     </div>
   );
 };
