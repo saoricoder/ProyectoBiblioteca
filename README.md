@@ -1,83 +1,137 @@
-# ProyectoBiblioteca- Sistema de Gestión de Biblioteca
+# ProyectoBiblioteca - Sistema Integral de Gestión
 
-## 🚀 Project Structure
-paint 
+## 🚀 Visión General
+Sistema completo de gestión con módulos de Biblioteca y Contabilidad, desarrollado con arquitectura moderna y tecnologías actualizadas.
+
+## 🛠️ Tecnologías Principales
+### Frontend
+- React 18 + Vite
+- React Router v6
+- CSS Modules
+- Fetch API
+- JWT Authentication
+
+### Backend
+- .NET Web API 7
+- Entity Framework Core
+- SQL Server
+- Swagger UI
+- JWT Authentication
+
+### Infraestructura
+- Docker Compose
+- SQL Server Container
+- Nginx Reverse Proxy
+
+## 📂 Estructura del Proyecto
+```plaintext
 ProyectoBiblioteca/
 ├── backend/
-│   ├── WebApi3/                # .NET Web API (v7.2.0)
-│   │   ├── Controllers/        # API endpoints for Biblioteca
-│   │   └── Models/             # Database entities
+│   ├── WebApi3/
+│   │   ├── Controllers/
+│   │   │   ├── BibliotecaController.cs
+│   │   │   └── ContabilidadController.cs
+│   │   ├── Data/
+│   │   │   ├── Contabilidad_data/
+│   │   │   │   ├── Cuentas_data.cs
+│   │   │   │   ├── Comprobante_data.cs
+│   │   │   │   └── AppDbContext_contabilidad.cs
+│   │   ├── Models/
+│   │   │   ├── Biblioteca_models/
+│   │   │   └── Contabilidad_models/
 ├── frontend/
-│   └── proyecto2/              # React Application
+│   └── proyecto2/
 │       ├── src/
-│       │   ├── moduls/         # Reusable components
-│       │   │   └── Menu_header.jsx
-│       │   ├── services/       # API services
-│       │   │   └── biblioteca.services/
-│       │   │       ├── prestamo.service.js
-│       │   │       └── detallePrestamo.service.js
-│       │   ├── page/           # Main views
-│       │   │   └── biblioteca/
-│       │   │       ├── ComplexPage/
-│       │   │       │   ├── PrestamoPage.jsx  # Loan management
-│       │   │       │   ├── ReporteCruzado.jsx # Cross report
-│       │   │       │   └── ReporteLibrosPorDia.jsx # Daily report
-├── init-db.sql                 # Database initialization script
-└── docker-compose.yml          # Container configuration
-## 🔧 Key Features
+│       │   ├── moduls/
+│       │   │   ├── Menu_header.jsx
+│       │   │   ├── chatHub.jsx
+│       │   │   └── Auth/
+│       │   │       ├── LoginForm.jsx
+│       │   │       └── RegisterForm.jsx
+│       │   ├── services/
+│       │   │   ├── biblioteca.services/
+│       │   │   │   ├── prestamo.service.js
+│       │   │   │   └── detallePrestamo.service.js
+│       │   │   └── user.services/
+│       │   │       └── Login.services.js
+│       │   ├── page/
+│       │   │   ├── biblioteca/
+│       │   │   │   ├── ComplexPage/
+│       │   │   │   │   ├── PrestamoPage.jsx
+│       │   │   │   │   ├── ReporteCruzado.jsx
+│       │   │   │   │   └── ReporteLibrosPorDia.jsx
+│       │   │   │   └── SimplePage/
+│       │   │   │       ├── AutorPage.jsx
+│       │   │   │       └── LibroPage.jsx
+│       │   │   ├── contabilidad/
+│       │   │   └── auth/
+│       ├── sources/
+│       │   ├── biblioteca.sql
+│       │   └── contabilidad.sql
+├── docker-compose.yml
+└── init-db.sql
 
-### Biblioteca Module
-- **Loan Management** (<mcsymbol name="PrestamoPage" filename="PrestamoPage.jsx" path="frontend/proyecto2/src/page/biblioteca/ComplexPage/PrestamoPage.jsx" startline="14" type="function"/></mcsymbol>)
-  - CRUD operations for loans
-  - Automatic loan number generation
-  - Detailed loan tracking with books
+## 🔧 Módulos Principales
+### Biblioteca
+- Gestión de Préstamos ( `PrestamoPage` )
+  
+  - CRUD completo de préstamos
+  - Generación automática de números de préstamo
+  - Detalle de préstamos con libros asociados
+- Reportes
+  
+  - Reporte Cruzado Libros-Autores ( `ReporteCruzado` )
+  - Reporte de Libros por Día ( `ReporteLibrosPorDia` )
 
-- **Reports System**
-  - Daily Book Delivery Report (<mcsymbol name="ReporteLibrosPorDia" filename="ReporteLibrosPorDia.jsx" path="frontend/proyecto2/src/page/biblioteca/ComplexPage/ReporteLibrosPorDia.jsx" startline="7" type="function"/></mcsymbol>)
-  - Author-Book Cross Report (<mcsymbol name="ReporteCruzado" filename="ReporteCruzado.jsx" path="frontend/proyecto2/src/page/biblioteca/ComplexPage/ReporteCruzado.jsx" startline="7" type="function"/></mcsymbol>)
+  ## 🚀 Instalación
+### Requisitos Previos
+- Docker Desktop
+- Node.js 18+
+- .NET SDK 7
 
-### Technical Stack
-- **Frontend**: 
-  - React 18 + Vite
-  - CSS Modules
-  - Fetch API for backend communication
+##Configuración Inicial
+# Clonar repositorio
+git clone https://github.com/saoricoder/ProyectoBiblioteca.git
+cd ProyectoSecretoXX
 
-- **Backend**:
-  - .NET Web API
-  - Swagger UI documentation
-  - Entity Framework Core
+# Iniciar contenedores
+docker-compose up --build
 
-- **Database**:
-  - SQL Server (configured in <mcfile name="init-db.sql" path="init-db.sql"/></mcfile>)
+# Configurar bases de datos
+docker exec -it sqlserver /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'YourStrong!Passw0rd' -i /init-db.sql
 
-## 🛠️ Installation
-
-```bash
-# Clone repository
-git clone https://github.com/User/ProyectoSecretoXX.git
-
-# Backend setup
-cd .\backend\WebApi3\
-dotnet restore
-dotnet run
-
-# Frontend setup
-cd .\frontend\proyecto2\
+# Ejcucion
+# Frontend
+cd frontend/proyecto2
 npm install
 npm start
 
-# Using Docker
-docker-compose up --build
-# API Documentation
+# Backend
+cd backend/WebApi3
+dotnet run
+
+## 📚 Documentación API
+Accede a la documentación interactiva en:
 http://localhost:5286/swagger
 
+## 🛡️ Autenticación
+El sistema utiliza JWT para la autenticación segura. Los endpoints protegidos requieren un token válido en el header Authorization.
 
+## 🐛 Reporte de Issues
+Para reportar problemas o sugerencias, por favor abre un issue en el repositorio con la siguiente información:
 
-Key architecture notes:
-1. Service Layer pattern used in frontend API calls
-2. Containerized development environment
-3. Responsive UI components with CSS modules
-4. RESTful API design with JSON payloads
-5. Error handling in both frontend and backend layers
+- Descripción detallada del problema
+- Pasos para reproducir
+- Versión del sistema
+```plaintext
+This improved README.md provides:
+1. Comprehensive project overview
+2. Detailed technology stack
+3. Complete project structure
+4. Main modules description
+5. Installation and setup instructions
+6. API documentation reference
+7. Authentication details
+8. Issue reporting guidelines
 
-Would you like me to expand any particular section or add specific technical details?
+Would you like me to add or modify any specific section?
