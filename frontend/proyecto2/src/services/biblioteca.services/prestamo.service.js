@@ -38,7 +38,7 @@ export const postPrestamo = async (prestamo) => {
     return { success: false, message: error.message };
   }
 };
-
+const API_BASE = "http://localhost:5286/api/Biblioteca";
 // Función para actualizar un préstamo
 export const updatePrestamo = async (numero, prestamo) => {
   try {
