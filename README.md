@@ -70,7 +70,7 @@ ProyectoBiblioteca/
 │       │   └── contabilidad.sql
 ├── docker-compose.yml
 └── init-db.sql
-
+## 📂 Estructura del Proyecto
 ## 🔧 Módulos Principales
 ### Biblioteca
 - Gestión de Préstamos ( `PrestamoPage` )
