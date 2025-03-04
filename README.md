@@ -1,7 +1,29 @@
 # ProyectoBiblioteca- Sistema de Gestión de Biblioteca
 
 ## 🚀 Project Structure
-
+paint 
+ProyectoBiblioteca/
+├── backend/
+│   ├── WebApi3/                # .NET Web API (v7.2.0)
+│   │   ├── Controllers/        # API endpoints for Biblioteca
+│   │   └── Models/             # Database entities
+├── frontend/
+│   └── proyecto2/              # React Application
+│       ├── src/
+│       │   ├── moduls/         # Reusable components
+│       │   │   └── Menu_header.jsx
+│       │   ├── services/       # API services
+│       │   │   └── biblioteca.services/
+│       │   │       ├── prestamo.service.js
+│       │   │       └── detallePrestamo.service.js
+│       │   ├── page/           # Main views
+│       │   │   └── biblioteca/
+│       │   │       ├── ComplexPage/
+│       │   │       │   ├── PrestamoPage.jsx  # Loan management
+│       │   │       │   ├── ReporteCruzado.jsx # Cross report
+│       │   │       │   └── ReporteLibrosPorDia.jsx # Daily report
+├── init-db.sql                 # Database initialization script
+└── docker-compose.yml          # Container configuration
 ## 🔧 Key Features
 
 ### Biblioteca Module
@@ -49,7 +71,7 @@ docker-compose up --build
 # API Documentation
 http://localhost:5286/swagger
 
-#Contributors
+
 
 Key architecture notes:
 1. Service Layer pattern used in frontend API calls
